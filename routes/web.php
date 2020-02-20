@@ -11,6 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',  'HomeController@index');
+Route::get('/smartphones',  'SmartphoneController@index');
+Route::get('/smartphones/form',  'SmartphoneController@form');
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
