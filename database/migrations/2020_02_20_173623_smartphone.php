@@ -21,11 +21,9 @@ class Smartphone extends Migration
             $table->string('chipset');
             $table->integer('mem_ram');
             $table->integer('mem_int');
-            $table->integer('mem_exp');
             $table->boolean('mem_exp_boolean');
             $table->double('display');
             $table->double('main_cam');
-            $table->integer('main_cam_amount');
             $table->double('selfie_cam');
             $table->integer('battery');
         });

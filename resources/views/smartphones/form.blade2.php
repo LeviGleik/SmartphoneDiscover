@@ -45,13 +45,7 @@
 
                     {{ Form::label('display', 'Display Size') }}
                     <div class="form-control">
-                        {{ Form::input('text', 'display', old('display'), ['data-slider-id' =>'display', 'id' => 'display']) }}
-                    </div>
-                    <br />
-
-                    {{ Form::label('main_cam', 'Main Camera') }}
-                    <div class="form-control">
-                        {{ Form::input('text','main_cam', old('main_cam'), ['id' => 'main_cam']) }}
+                        {{ Form::input('text', 'display', old('display'), ['id' => 'display']) }}
                     </div>
                     <br />
 
@@ -70,12 +64,14 @@
     $(document).ready(function() {
         $("#year").slider({
             ticks: [2015, 2016, 2017, 2018, 2019, 2020],
+            value: [2015, 2020],
             ticks_labels: ['2015', '2016', '2017', '2018', '2019', '2020'],
             tooltip: 'hide',
             lock_to_ticks: true
         }); 
         $("#mem_ram").slider({
             ticks: [0, 1, 2, 3, 4, 6, 8, 10, 12, 16],
+            value: [0, 16],
             ticks_positions: [0, 10, 20, 30, 40, 50, 60, 70, 80, 100],
             tooltip: 'hide',
             ticks_labels: ['512 MB', '1 GB', '2 GB', '3 GB', '4 GB', '6 GB', '8 GB', '10 GB', '12 GB', '16 GB'],
@@ -83,19 +79,14 @@
         }); 
         $("#mem_int").slider({
             ticks: [0, 1, 2, 4, 8, 16, 32, 64, 128, 256, 512],
-            ticks_positions: [0, 9.09, 18.18, 27.27, 36.36, 45.45, 54.54, 63.63, 72.72, 81.81, 100],        
+            ticks_positions: [0, 9.09, 18.18, 27.27, 36.36, 45.45, 54.54, 63.63, 72.72, 81.81, 100],
+            value: [0, 512],
             tooltip: 'hide',
             ticks_labels: ['512 MB', '1 GB', '2 GB', '4 GB', '8 GB', '16 GB', '32 GB', '64 GB', '128 GB', '256 GB', '512 GB'],
             lock_to_ticks: true
         });
-        $("#main_cam").slider({
-            ticks: [5, 10, 12, 16, 20, 30, 40, 48, 60, 64, 108],
-            ticks_positions: [0, 9.09, 18.18, 27.27, 36.36, 45.45, 54.54, 63.63, 72.72, 81.81, 100],
-            tooltip: 'hide',
-            ticks_labels: ['5MP', '10MP', '12MP', '16MP', '20MP', '30MP', '40MP', '48MP', '60MP', '64MP', '108MP'],
-            lock_to_ticks: true
-        });
         $("#display").slider({
+            value: [4, 7],
             min: 4,
             max: 7,
             tooltip_position: 'bottom',
@@ -110,12 +101,6 @@
     }
     .tooltip.in {
         opacity: 100%;
-    }
-    #display .slider-selection {
-        background: #8ac1ef;
-    }
-    #display .slider-handle {
-        border-bottom-color: blue;
     }
 </style>
 @endsection
