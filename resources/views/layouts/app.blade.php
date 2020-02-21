@@ -12,13 +12,16 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/jquery-3.4.1.min.js') }}"></script>
-    @yield('test')
+    <script src="{{ asset('js/bootstrap-slider.min.js') }}"></script>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap-slider.min.css') }}" rel="stylesheet">
+    
+    @yield('test')
 </head>
 <body>
     <div id="app">
