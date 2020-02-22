@@ -9,5 +9,17 @@ class Smartphone extends Model
 {
     use Notifiable;
 
-    //protected $fillable = ['full_name', 'acc_name', 'cpf'];
+    protected $fillable = [
+    	'brand', 		
+		'name', 		
+		'year', 		
+		'chipset', 		
+		'mem_ram', 		
+		'mem_int', 		
+		'mem_exp_boolean', 		
+		'display', 		
+		'main_cam', 		
+		'selfie_cam', 		
+		'battery'
+	];
 }

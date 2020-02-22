@@ -11,9 +11,10 @@
 |
 */
 
-Route::get('/',  'HomeController@index');
-Route::get('/smartphones',  'SmartphoneController@index');
-Route::get('/smartphones/form',  'SmartphoneController@form');
+Route::get('/',  'SmartphoneController@index');
+Route::get('smartphones',  'SmartphoneController@index');
+Route::get('smartphones/form',  'SmartphoneController@form');
+Route::post('smartphones/save',  'SmartphoneController@save');
 
 
 Auth::routes();

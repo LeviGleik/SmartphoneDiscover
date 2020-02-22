@@ -8,55 +8,88 @@
 					Cadastro
                 </div>
                 <div class="card-body">
-                    {{ Form::open() }}
-                    {{ Form::label('brand', 'Brand Name') }}
-                    {{ Form::input('text', 'brand', old('brand'), ['class' => 'form-control', 'id' => 'brand']) }}
+                    @if(Session::has('msg_success'))
+                        <div class="alert alert-success">
+                            {{ Session::get('msg_success') }}
+                        </div>
+                    @else
+                    @if(Session::has('msg_update'))
+                        <div class="alert alert-success">
+                            {{ Session::get('msg_update') }}
+                        </div>
+                    @endif
 
-                    {{ Form::label('name', 'Device Name') }}
-                    {{ Form::input('text', 'name', old('name'), ['class' => 'form-control', 'id' => 'name']) }}
+                    @endif
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    {{ Form::open(['url' => 'smartphones/save']) }}
+                        {{ Form::label('brand', 'Brand Name') }}
+                        {{ Form::input('text', 'brand', old('brand'), ['class' => 'form-control', 'id' => 'brand']) }}
 
-                    {{ Form::label('year', 'Launch Year') }}
-                    <div class="form-control">
-                        {{ Form::input('text', 'year', old('year'), ['id' => 'year']) }}
-                    </div> 
-                    <br />
+                        {{ Form::label('name', 'Device Name') }}
+                        {{ Form::input('text', 'name', old('name'), ['class' => 'form-control', 'id' => 'name']) }}
 
-                    {{ Form::label('chipset', 'Chipset') }}
-                    {{ Form::select('chipset', ['L' => 'TesteL', 'S' => 'TesteS'], null, ['class' => 'form-control', 'id' => 'chipset']) }}
+                        {{ Form::label('year', 'Launch Year') }}
+                        <div class="form-control">
+                            {{ Form::input('text', 'year', old('year'), ['id' => 'year']) }}
+                        </div> 
+                        <br />
 
-                    {{ Form::label('mem_ram', 'Ram Memory') }}
-                    <div class="form-control">
-                        {{ Form::input('text','mem_ram', old('mem_ram'), ['id' => 'mem_ram']) }}
-                    </div>
-                    <br />
+                        {{ Form::label('chipset', 'Chipset') }}
+                        {{ Form::select('chipset', ['L' => 'TesteL', 'S' => 'TesteS'], null, ['class' => 'form-control', 'id' => 'chipset']) }}
 
-                    {{ Form::label('mem_int', 'Internal Memory') }}
-                    <div class="form-control">
-                        {{ Form::input('text','mem_int', old('mem_int'), ['id' => 'mem_int']) }}
-                    </div>
-                    <br />
+                        {{ Form::label('mem_ram', 'Ram Memory') }}
+                        <div class="form-control">
+                            {{ Form::input('text','mem_ram', old('mem_ram'), ['id' => 'mem_ram']) }}
+                        </div>
+                        <br />
 
-                    <div class="custom-control custom-checkbox">
-                        {{ Form::input('checkbox','mem_exp_boolean', old('mem_exp_boolean'), ['class' => 'custom-control-input','id' => 'mem_exp_boolean']) }}
+                        {{ Form::label('mem_int', 'Internal Memory') }}
+                        <div class="form-control">
+                            {{ Form::input('text','mem_int', old('mem_int'), ['id' => 'mem_int']) }}
+                        </div>
+                        <br />
 
-                        {{ Form::label('mem_exp_boolean', 'External Memory', ['class' => 'custom-control-label']) }}
-                    </div>
-                    <br />
+                        <div class="custom-control custom-checkbox">
+                            {{ Form::input('checkbox','mem_exp_boolean', old('mem_exp_boolean'), ['class' => 'custom-control-input','id' => 'mem_exp_boolean']) }}
 
-                    {{ Form::label('display', 'Display Size') }}
-                    <div class="form-control">
-                        {{ Form::input('text', 'display', old('display'), ['data-slider-id' =>'display', 'id' => 'display']) }}
-                    </div>
-                    <br />
+                            {{ Form::label('mem_exp_boolean', 'External Memory', ['class' => 'custom-control-label']) }}
+                        </div>
+                        <br />
 
-                    {{ Form::label('main_cam', 'Main Camera') }}
-                    <div class="form-control">
-                        {{ Form::input('text','main_cam', old('main_cam'), ['id' => 'main_cam']) }}
-                    </div>
-                    <br />
+                        {{ Form::label('display', 'Display Size') }}
+                        <div class="form-control">
+                            {{ Form::input('text', 'display', old('display'), ['data-slider-id' =>'display', 'id' => 'display']) }}
+                        </div>
+                        <br />
 
-                    <br />
-                    {{ Form::submit('Salvar', ['class' => 'btn btn-group btn-primary', 'id' => 'submit']) }}
+                        {{ Form::label('main_cam', 'Main Camera') }}
+                        <div class="form-control">
+                            {{ Form::input('text','main_cam', old('main_cam'), ['id' => 'main_cam']) }}
+                        </div>
+                        <br />
+
+                        {{ Form::label('selfie_cam', 'Selfie Camera') }}
+                        <div class="form-control">
+                            {{ Form::input('text','selfie_cam', old('selfie_cam'), ['id' => 'selfie_cam']) }}
+                        </div>
+                        <br />
+
+                        {{ Form::label('battery', 'Battery') }}
+                        <div class="form-control">
+                            {{ Form::input('text', 'battery', old('battery'), ['data-slider-id' =>'battery', 'id' => 'battery']) }}
+                        </div>
+                        <br />
+
+                        <br />
+                        {{ Form::submit('Salvar', ['class' => 'btn btn-group btn-primary', 'id' => 'submit']) }}
 
                     {{ Form::close() }}
                 </div>
@@ -68,6 +101,7 @@
 @section('test')
 <script type="text/javascript">
     $(document).ready(function() {
+        $("#mem_exp_boolean").prop('checked', 'true');
         $("#year").slider({
             ticks: [2015, 2016, 2017, 2018, 2019, 2020],
             ticks_labels: ['2015', '2016', '2017', '2018', '2019', '2020'],
@@ -88,7 +122,19 @@
             ticks_labels: ['512 MB', '1 GB', '2 GB', '4 GB', '8 GB', '16 GB', '32 GB', '64 GB', '128 GB', '256 GB', '512 GB'],
             lock_to_ticks: true
         });
+        if($("#mem_exp_boolean").prop('checked')){
+            $("#mem_exp_boolean").val('true');
+        }else{
+             $("#mem_exp_boolean").val('false');
+        }
         $("#main_cam").slider({
+            ticks: [5, 10, 12, 16, 20, 30, 40, 48, 60, 64, 108],
+            ticks_positions: [0, 9.09, 18.18, 27.27, 36.36, 45.45, 54.54, 63.63, 72.72, 81.81, 100],
+            tooltip: 'hide',
+            ticks_labels: ['5MP', '10MP', '12MP', '16MP', '20MP', '30MP', '40MP', '48MP', '60MP', '64MP', '108MP'],
+            lock_to_ticks: true
+        });
+        $("#selfie_cam").slider({
             ticks: [5, 10, 12, 16, 20, 30, 40, 48, 60, 64, 108],
             ticks_positions: [0, 9.09, 18.18, 27.27, 36.36, 45.45, 54.54, 63.63, 72.72, 81.81, 100],
             tooltip: 'hide',
@@ -100,6 +146,15 @@
             max: 7,
             tooltip_position: 'bottom',
             step: 0.1
+        });
+        $("#battery").slider({
+            min: 100,
+            max: 6000,
+            tooltip_position: 'bottom',
+            formatter: function(value){
+                return value + "mAh";
+            },
+            step: 100
         });
     });
     
@@ -115,6 +170,12 @@
         background: #8ac1ef;
     }
     #display .slider-handle {
+        border-bottom-color: blue;
+    }
+    #battery .slider-selection {
+        background: #8ac1ef;
+    }
+    #battery .slider-handle {
         border-bottom-color: blue;
     }
 </style>
