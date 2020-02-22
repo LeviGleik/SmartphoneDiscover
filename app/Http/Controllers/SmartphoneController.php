@@ -18,13 +18,14 @@ class SmartphoneController extends Controller
 	}
 	public function save(Request $request){
 		$smartphone = new Smartphone();
-		$val = $request->validate(['brand' => 'required|string|max:64', 		
+		$request['mem_exp_boolean'] = (!isset($request['mem_exp_boolean']))? 0 : 1;
+		$val = $request->validate(['brand' => 'required|string|max:32', 		
 			'name' => 'required|string|max:16', 		
 			'year' => 'required|integer|min:2015|max:2020', 		
 			'chipset' => 'required|string|max:64', 		
 			'mem_ram' => 'required|integer|min:0|max:16', 		
 			'mem_int' => 'required|integer|min:0|max:512', 		
-			'mem_exp_boolean' => 'required|boolean', 		
+			'mem_exp_boolean' => 'required|accepted', 		
 			'display' => 'required|regex:/^\d+(\.\d{1,2})?$/', 		
 			'main_cam' => 'required|required|regex:/^\d+(\.\d{1,2})?$/', 		
 			'selfie_cam' => 'required|required|regex:/^\d+(\.\d{1,2})?$/', 		
