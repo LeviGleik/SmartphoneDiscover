@@ -23,8 +23,8 @@ class Smartphone extends Migration
             $table->integer('mem_int');
             $table->boolean('mem_exp_boolean');
             $table->double('display');
-            $table->double('main_cam');
-            $table->double('selfie_cam');
+            $table->integer('main_cam');
+            $table->integer('selfie_cam');
             $table->integer('battery');
             $table->timestamps();
         });

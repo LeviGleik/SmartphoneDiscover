@@ -30,8 +30,8 @@
                         </div>
                     @endif
                     {{ Form::open(['url' => 'smartphones/save']) }}
-                        {{ Form::label('chipset', 'Chipset') }}
-                        {{ Form::select('chipset', ['apple' => 'Apple', 'apple' => 'Apple', 'lg' => 'LG', 'motorola' => 'Motorola', 'samsung' => 'Samsung'], null, ['class' => 'form-control', 'id' => 'chipset']) }}
+                        {{ Form::label('brand', 'Brand') }}
+                        {{ Form::select('brand', ['apple' => 'Apple', 'apple' => 'Apple', 'lg' => 'LG', 'motorola' => 'Motorola', 'samsung' => 'Samsung'], null, ['class' => 'form-control', 'id' => 'brand']) }}
 
                         {{ Form::label('name', 'Device Name') }}
                         {{ Form::input('text', 'name', old('name'), ['class' => 'form-control', 'id' => 'name']) }}
@@ -113,7 +113,7 @@
         $("#mem_ram").slider({
             ticks: [0, 1, 2, 3, 4, 6, 8, 10, 12, 16],
             tooltip_position: 'bottom',
-            ticks_positions: [0, 10, 20, 30, 40, 50, 60, 70, 80, 100],
+            ticks_positions: [0, 11.11, 22.22, 33.33, 44.44, 55.55, 66.66, 77.77, 88.88, 100],
             formatter: function(value){
                 if(value == 0){
                     return "512 MB";
@@ -126,7 +126,7 @@
         $("#mem_int").slider({
             ticks: [0, 1, 2, 4, 8, 16, 32, 64, 128, 256, 512],
             tooltip_position: 'bottom',
-            ticks_positions: [0, 9.09, 18.18, 27.27, 36.36, 45.45, 54.54, 63.63, 72.72, 81.81, 100], 
+            ticks_positions: [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100],
             formatter: function(value){
                 if(value == 0){
                     return "512 MB";
@@ -138,7 +138,7 @@
         });
         $("#main_cam").slider({
             ticks: [5, 10, 12, 16, 20, 30, 40, 48, 60, 64, 108],
-            ticks_positions: [0, 9.09, 18.18, 27.27, 36.36, 45.45, 54.54, 63.63, 72.72, 81.81, 100], 
+            ticks_positions: [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100],
             tooltip_position: 'bottom',
             formatter: function(value){
                 return value + "MP";
@@ -146,8 +146,8 @@
             lock_to_ticks: true
         });
         $("#selfie_cam").slider({
-            ticks: [5, 10, 12, 16, 20, 30, 40, 48, 60, 64, 108],
-            ticks_positions: [0, 9.09, 18.18, 27.27, 36.36, 45.45, 54.54, 63.63, 72.72, 81.81, 100], 
+            ticks: [5, 8, 10, 12, 16, 20, 30, 32, 40, 48, 60, 64, 108],
+            ticks_positions: [0, 8.33, 16.66, 25, 33.3, 41.65, 49.98, 58.31, 64.61, 74.97, 83.3, 91.63, 100], 
             tooltip_position: 'bottom',
             formatter: function(value){
                 return value + "MP";
