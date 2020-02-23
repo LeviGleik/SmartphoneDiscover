@@ -19,7 +19,11 @@ class SmartphoneController extends Controller
 	}
 	public function save(Request $request){
 		$smartphone = new Smartphone();
-		$request['mem_exp_boolean'] = (!isset($request['mem_exp_boolean']))? 0 : 1;
+		if($request['mem_exp_boolean'] != true){
+			$request['mem_exp_boolean'] = (!isset($request['mem_exp_boolean']))? false : true;
+		}
+        var_dump($request->all());
+
 		$val = $request->validate(['brand' => 'required|string|max:32', 		
 			'name' => 'required|string|max:32', 		
 			'year' => 'required|integer|min:2015|max:2020', 		
@@ -54,10 +58,13 @@ class SmartphoneController extends Controller
         $this->validator($request->all())->validate();
     }
     public function edit($id){
+
         $smartphone = Smartphone::FindOrFail($id);
         return view('smartphones/form', ['smartphones' => $smartphone]);
     }
     public function update($id, Request $request){
+
+		$request['mem_exp_boolean'] = (!isset($request['mem_exp_boolean']))? false : true;
         \Session::flash('msg_update', 'Smartphone updated successfully.');
         $smartphone = Smartphone::FindOrFail($id);
         $smartphone->update($request->all());

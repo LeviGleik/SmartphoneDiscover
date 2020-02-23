@@ -74,11 +74,19 @@
                         <br />
 
                             @if(Request::is('*/edit'))
-                            {{ Form::input('checkbox', 'mem_exp_boolean', null, ['id' => 'mem_exp_boolean', $smartphones['mem_exp_boolean'] == 1 ? 'checked': '']) }}
+
+                            <div class="custom-control custom-checkbox">
+                            {{ Form::input('checkbox', 'mem_exp_boolean', null, ['id' => 'mem_exp_boolean', $smartphones['mem_exp_boolean'] == 1 ? 'checked': '', 'class' => 'custom-control-input']) }}
+
+                            {{ Form::label('mem_exp_boolean', 'External Memory', ['class' => 'custom-control-label']) }}
+                            </div>
                             @else
-                            {{ Form::input('checkbox', 'mem_exp_boolean', null, ['id' => 'mem_exp_boolean']) }}
+                            <div class="custom-control custom-checkbox">
+                            {{ Form::input('checkbox', 'mem_exp_boolean', null, ['id' => 'mem_exp_boolean', 'class' => 'custom-control-input']) }}
+
+                            {{ Form::label('mem_exp_boolean', 'External Memory', ['class' => 'custom-control-label']) }}
+                            </div>
                             @endif
-                            {{ Form::label('mem_exp_boolean', 'External Memory') }}
                              
                         <br />
 
