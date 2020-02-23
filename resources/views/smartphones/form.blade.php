@@ -29,16 +29,24 @@
                             </ul>
                         </div>
                     @endif
-                    {{ Form::open(['url' => 'smartphones/save']) }}
+                    @if(Request::is('*/edit'))
+                        {{ Form::model($smartphones, ['method'  => 'PATCH', 'url' => 'smartphones/'.$smartphones->id]) }}
+                    @else
+                        {{ Form::open(['url' => 'smartphones/save']) }}
+                    @endif
                         {{ Form::label('brand', 'Brand') }}
                         {{ Form::select('brand', ['apple' => 'Apple', 'apple' => 'Apple', 'lg' => 'LG', 'motorola' => 'Motorola', 'samsung' => 'Samsung'], null, ['class' => 'form-control', 'id' => 'brand']) }}
 
                         {{ Form::label('name', 'Device Name') }}
-                        {{ Form::input('text', 'name', old('name'), ['class' => 'form-control', 'id' => 'name']) }}
+                        {{ Form::input('text', 'name', null, ['class' => 'form-control', 'id' => 'name']) }}
 
                         {{ Form::label('year', 'Launch Year') }}
                         <div class="form-control">
-                            {{ Form::input('text', 'year', old('year'), ['id' => 'year']) }}
+                            @if(Request::is('*/edit'))
+                            {{ Form::input('number', 'year', null, ['id' => 'year', 'data-slider-value'=>$smartphones['year']]) }}
+                            @else
+                            {{ Form::input('number', 'year', null, ['id' => 'year']) }}
+                            @endif
                         </div> 
                         <br />
 
@@ -47,44 +55,70 @@
 
                         {{ Form::label('mem_ram', 'Ram Memory') }}
                         <div class="form-control">
-                            {{ Form::input('text','mem_ram', old('mem_ram'), ['id' => 'mem_ram']) }}
-                        </div>
+                            @if(Request::is('*/edit'))
+                            {{ Form::input('text','mem_ram', null, ['id' => 'mem_ram', 'data-slider-value'=>$smartphones['mem_ram']]) }}
+                            @else
+                            {{ Form::input('text','mem_ram', null, ['id' => 'mem_ram']) }}
+                            @endif
+                            </div>
                         <br />
 
                         {{ Form::label('mem_int', 'Internal Memory') }}
                         <div class="form-control">
-                            {{ Form::input('text','mem_int', old('mem_int'), ['id' => 'mem_int']) }}
+                            @if(Request::is('*/edit'))
+                            {{ Form::input('text','mem_int', null, ['id' => 'mem_int', 'data-slider-value'=>$smartphones['mem_int']]) }}
+                            @else                            
+                            {{ Form::input('text','mem_int', null, ['id' => 'mem_int']) }}
+                            @endif
                         </div>
                         <br />
 
-                        <div class="custom-control custom-checkbox">
-                            {{ Form::input('checkbox','mem_exp_boolean', old('mem_exp_boolean'), ['class' => 'custom-control-input','id' => 'mem_exp_boolean']) }}
-
-                            {{ Form::label('mem_exp_boolean', 'External Memory', ['class' => 'custom-control-label']) }}
-                        </div>
+                            @if(Request::is('*/edit'))
+                            {{ Form::input('checkbox', 'mem_exp_boolean', null, ['id' => 'mem_exp_boolean', $smartphones['mem_exp_boolean'] == 1 ? 'checked': '']) }}
+                            @else
+                            {{ Form::input('checkbox', 'mem_exp_boolean', null, ['id' => 'mem_exp_boolean']) }}
+                            @endif
+                            {{ Form::label('mem_exp_boolean', 'External Memory') }}
+                             
                         <br />
 
                         {{ Form::label('display', 'Display Size') }}
                         <div class="form-control">
-                            {{ Form::input('text', 'display', old('display'), ['data-slider-id' =>'display', 'id' => 'display']) }}
+                            @if(Request::is('*/edit'))
+                            {{ Form::input('text', 'display', null, ['data-slider-id' =>'display', 'id' => 'display', 'data-slider-value'=>$smartphones['display']]) }}
+                            @else
+                            {{ Form::input('text', 'display', null, ['data-slider-id' =>'display', 'id' => 'display']) }}
+                            @endif
                         </div>
                         <br />
 
                         {{ Form::label('main_cam', 'Main Camera') }}
                         <div class="form-control">
-                            {{ Form::input('text','main_cam', old('main_cam'), ['id' => 'main_cam']) }}
+                            @if(Request::is('*/edit'))
+                            {{ Form::input('text','main_cam', null, ['id' => 'main_cam', 'data-slider-value'=>$smartphones['main_cam']]) }}
+                            @else
+                            {{ Form::input('text','main_cam', null, ['id' => 'main_cam']) }}
+                            @endif
                         </div>
                         <br />
 
                         {{ Form::label('selfie_cam', 'Selfie Camera') }}
                         <div class="form-control">
-                            {{ Form::input('text','selfie_cam', old('selfie_cam'), ['id' => 'selfie_cam']) }}
+                            @if(Request::is('*/edit'))
+                            {{ Form::input('text','selfie_cam', null, ['id' => 'selfie_cam', 'data-slider-value'=>$smartphones['selfie_cam']]) }}
+                            @else
+                            {{ Form::input('text','selfie_cam', null, ['id' => 'selfie_cam']) }}
+                            @endif
                         </div>
                         <br />
 
                         {{ Form::label('battery', 'Battery') }}
                         <div class="form-control">
-                            {{ Form::input('text', 'battery', old('battery'), ['data-slider-id' =>'battery', 'id' => 'battery']) }}
+                            @if(Request::is('*/edit'))
+                            {{ Form::input('text', 'battery', null, ['data-slider-id' =>'battery', 'id' => 'battery', 'data-slider-value'=>$smartphones['battery']]) }}
+                            @else
+                            {{ Form::input('text', 'battery', null, ['data-slider-id' =>'battery', 'id' => 'battery']) }}
+                            @endif
                         </div>
                         <br />
 
@@ -101,7 +135,12 @@
 @section('test')
 <script type="text/javascript">
     $(document).ready(function() {
-        $("#mem_exp_boolean").prop('checked', 'true');
+        // $("#mem_exp_boolean").change(function() {
+        //     var $input = $(this);
+        //     if(!$input.prop("checked")){
+        //         !$input.removeProp("checked");
+        //     }
+        // }).change();
         $("#year").slider({
             ticks: [2015, 2016, 2017, 2018, 2019, 2020],
             tooltip_position: 'bottom',

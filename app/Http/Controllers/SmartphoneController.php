@@ -14,7 +14,8 @@ class SmartphoneController extends Controller
 		return view('smartphones.list', ['smartphones' => $smartphones]);
 	}  
 	public function form(){
-		return view('smartphones.form');
+        $smartphones = Smartphone::get();
+		return view('smartphones.form', ['smartphones' => $smartphones]);
 	}
 	public function save(Request $request){
 		$smartphone = new Smartphone();
@@ -25,7 +26,7 @@ class SmartphoneController extends Controller
 			'chipset' => 'required|string|max:64', 		
 			'mem_ram' => 'required|integer|min:0|max:16', 		
 			'mem_int' => 'required|integer|min:0|max:512', 		
-			'mem_exp_boolean' => 'required|accepted', 		
+			'mem_exp_boolean' => 'required', 		
 			'display' => 'required|regex:/^\d+(\.\d{1,2})?$/', 		
 			'main_cam' => 'required|integer|required', 		
 			'selfie_cam' => 'required|integer|required', 		
@@ -44,12 +45,28 @@ class SmartphoneController extends Controller
 			'battery' => $request['battery']
 		]);
 		
-    	\Session::flash('msg_success', 'Cliente cadastrado com sucesso.');
+    	\Session::flash('msg_success', 'Smartphone successfully registered.');
 
 		return redirect('smartphones/form');
 
 	}
 	public function register(Request $request){
         $this->validator($request->all())->validate();
+    }
+    public function edit($id){
+        $smartphone = Smartphone::FindOrFail($id);
+        return view('smartphones/form', ['smartphones' => $smartphone]);
+    }
+    public function update($id, Request $request){
+        \Session::flash('msg_update', 'Smartphone updated successfully.');
+        $smartphone = Smartphone::FindOrFail($id);
+        $smartphone->update($request->all());
+        return Redirect::to('smartphones/'.$smartphone->id.'/edit');
+    }
+    public function delete($id){
+        \Session::flash('msg_deleted', 'Smartphone deleted successfully.');
+        $smartphone = Smartphone::FindOrFail($id);
+        $smartphone->delete();
+        return Redirect::to('smartphones');
     }
 }
