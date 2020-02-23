@@ -3,6 +3,7 @@
 
 // Variables
 @import 'variables';
+$fa-font-path: "../webfonts";
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
@@ -10,5 +11,5 @@
 @import "~bootstrap/scss/functions";
 @import "~bootstrap/scss/variables";
 @import "~bootstrap/scss/mixins";
-
+@import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
 @import "awesome-bootstrap-checkbox";

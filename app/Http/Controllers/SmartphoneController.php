@@ -11,6 +11,7 @@ class SmartphoneController extends Controller
 {
 	public function index(){
         $smartphones = Smartphone::get();
+        $smartphones = Smartphone::sortable()->paginate(10);
 		return view('smartphones.list', ['smartphones' => $smartphones]);
 	}  
 	public function form(){

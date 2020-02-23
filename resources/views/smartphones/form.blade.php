@@ -6,6 +6,9 @@
             <div class="card">
                 <div class="card-header">
 					Cadastro
+                    <div class="col-md-offset-2 float-right">
+                        <a class="btn btn-primary btn-sm" href="{{ url('smartphones') }}">Back</a>
+                    </div>
                 </div>
                 <div class="card-body">
                     @if(Session::has('msg_success'))
@@ -131,7 +134,7 @@
                         <br />
 
                         <br />
-                        {{ Form::submit('Salvar', ['class' => 'btn btn-group btn-primary', 'id' => 'submit']) }}
+                        {{ Form::submit('Save', ['class' => 'btn btn-group btn-primary', 'id' => 'submit']) }}
 
                     {{ Form::close() }}
                 </div>
