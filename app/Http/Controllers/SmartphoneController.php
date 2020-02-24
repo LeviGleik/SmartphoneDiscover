@@ -35,7 +35,8 @@ class SmartphoneController extends Controller
 			'display' => 'required|regex:/^\d+(\.\d{1,2})?$/', 		
 			'main_cam' => 'required|integer|required', 		
 			'selfie_cam' => 'required|integer|required', 		
-			'battery' => 'required|integer|min:100|max:6000'
+			'battery' => 'required|integer|min:100|max:6000',
+			'price' => 'integer'	
 		]);
 		$smartphone->create(['brand' => $request['brand'], 		
 			'name' => $request['name'], 		
@@ -47,7 +48,8 @@ class SmartphoneController extends Controller
 			'display' => $request['display'], 		
 			'main_cam' => $request['main_cam'], 		
 			'selfie_cam' => $request['selfie_cam'], 		
-			'battery' => $request['battery']
+			'battery' => $request['battery'], 		
+			'price' => $request['price']
 		]);
 		
     	\Session::flash('msg_success', 'Smartphone successfully registered.');

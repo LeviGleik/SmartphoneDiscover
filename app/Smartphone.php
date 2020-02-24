@@ -22,8 +22,9 @@ class Smartphone extends Model
 		'display', 		
 		'main_cam', 		
 		'selfie_cam', 		
-		'battery'
+		'battery',	
+		'price'
 	];
 
-	public $sortable = ['brand', 'name', 'year', 'main_cam', 'battery'];
+	public $sortable = ['brand', 'name', 'year', 'main_cam', 'battery', 'price'];
 }

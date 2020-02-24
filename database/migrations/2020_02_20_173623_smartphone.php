@@ -26,6 +26,7 @@ class Smartphone extends Migration
             $table->integer('main_cam');
             $table->integer('selfie_cam');
             $table->integer('battery');
+            $table->integer('price');
             $table->timestamps();
         });
     }

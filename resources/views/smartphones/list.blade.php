@@ -12,20 +12,20 @@
             <div class="card-body">
                 <table class="table">
                     <thead>
-                        <th>@sortablelink('brand')</th>
-                        <th>@sortablelink('name')</th>
-                        <th>@sortablelink('main_cam', 'Main Camera')</th>
-                        <th>@sortablelink('year')</th>
+                        <th style="text-align: center;">@sortablelink('brand')</th>
+                        <th style="text-align: center;">@sortablelink('name')</th>
+                        <th style="text-align: center;">@sortablelink('main_cam', 'Main Camera')</th>
+                        <th style="text-align: center;">@sortablelink('price')</th>
                         <th></th>
                         <th></th>
                     </thead>
                     <tbody>
                         @foreach($smartphones as $smartphone)
                             <tr>
-                                <td>{{ ucfirst($smartphone->brand) }}</td>
-                                <td>{{ ucfirst($smartphone->name) }}</td>
-                                <td>{{ $smartphone->main_cam }}MP</td>
-                                <td>{{ $smartphone->year }}</td>
+                                <td style="text-align: center;">{{ ucfirst($smartphone->brand) }}</td>
+                                <td style="text-align: center;">{{ ucfirst($smartphone->name) }}</td>
+                                <td style="text-align: center;">{{ $smartphone->main_cam }}MP</td>
+                                <td style="text-align: center;">{{ $smartphone->price }} R$</td>
                                 <td>
                                     <a class="btn btn-primary a-btn-slide-text btn-sm" href="/smartphones/{{$smartphone->id}}/edit"><i class="fas fa-edit fa-sm"></i></a>
                                 </td>

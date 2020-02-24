@@ -133,6 +133,15 @@
                         </div>
                         <br />
 
+                        {{ Form::label('price', 'Price') }}
+                        <div class="form-control">
+                            @if(Request::is('*/edit'))
+                            {{ Form::input('text', 'price', null, ['data-slider-id' =>'price', 'id' => 'price', 'data-slider-value'=>$smartphones['price']]) }}
+                            @else
+                            {{ Form::input('text', 'price', null, ['data-slider-id' =>'price', 'id' => 'price']) }}
+                            @endif
+                        </div>
+
                         <br />
                         {{ Form::submit('Save', ['class' => 'btn btn-group btn-primary', 'id' => 'submit']) }}
 
@@ -219,6 +228,28 @@
             },
             step: 100
         });
+        $("#price").slider({
+            min: 500,
+            max: 11000,
+            tooltip_position: 'bottom',
+            formatter: function(value){
+                if(value >= 1000){
+                    var b = value;
+                    var c = 0;
+                    while(b >= 1000){
+                        b -= 1000;
+                        c++;
+                    }
+                    if(b == 0){
+                        return c + ".000 R$";
+                    }else{
+                        return c + "." + b +" R$";
+                    }
+                }
+                return value + " R$";
+            },
+            step: 100
+        });
     });
     
 </script>
@@ -239,6 +270,12 @@
         background: #8ac1ef;
     }
     #battery .slider-handle {
+        border-bottom-color: blue;
+    }
+    #price .slider-selection {
+        background: #8ac1ef;
+    }
+    #price .slider-handle {
         border-bottom-color: blue;
     }
 </style>

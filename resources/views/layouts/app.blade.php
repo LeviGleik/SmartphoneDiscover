@@ -20,7 +20,11 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap-slider.min.css') }}" rel="stylesheet">
-    
+    <style type="text/css">
+        table th, .table td {
+            padding: 0.6rem;
+        }
+    </style>
     @yield('test')
 </head>
 <body>
