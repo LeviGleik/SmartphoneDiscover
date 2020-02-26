@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/',  'SmartphoneController@index');
+Route::get('/',  'HomeController@index');
 Route::get('smartphones',  'SmartphoneController@index');
 Route::get('smartphones/form',  'SmartphoneController@form');
 Route::get('smartphones/{smartphones}/edit/',  'SmartphoneController@edit');

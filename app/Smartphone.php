@@ -23,7 +23,8 @@ class Smartphone extends Model
 		'main_cam', 		
 		'selfie_cam', 		
 		'battery',	
-		'price'
+		'price',
+		'antutu'
 	];
 
 	public $sortable = ['brand', 'name', 'year', 'main_cam', 'battery', 'price'];
