@@ -36,7 +36,8 @@ class SmartphoneController extends Controller
 			'main_cam' => 'required|integer|required', 		
 			'selfie_cam' => 'required|integer|required', 		
 			'battery' => 'required|integer|min:100|max:6000',
-			'price' => 'integer'	
+			'price' => 'integer',
+			'antutu' => 'integer'
 		]);
 		$smartphone->create(['brand' => $request['brand'], 		
 			'name' => $request['name'], 		

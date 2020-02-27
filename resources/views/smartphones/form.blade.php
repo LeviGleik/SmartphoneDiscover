@@ -142,6 +142,13 @@
                             @endif
                         </div>
 
+                        {{ Form::label('antutu', 'Antutu') }}
+                        @if(Request::is('*/edit'))
+                        {{ Form::number('antutu', old('antutu'), ['class' => 'form-control']) }}
+                        @else
+                        {{ Form::number('antutu', old('antutu'), ['class' => 'form-control']) }}
+                        @endif
+
                         <br />
                         {{ Form::submit('Save', ['class' => 'btn btn-group btn-primary', 'id' => 'submit']) }}
 
