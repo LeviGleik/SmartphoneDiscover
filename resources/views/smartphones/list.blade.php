@@ -16,7 +16,10 @@
                         <th style="text-align: center;">@sortablelink('name')</th>
                         <th style="text-align: center;">@sortablelink('main_cam', 'Main Camera')</th>
                         <th style="text-align: center;">@sortablelink('price')</th>
+                        @auth
                         <th></th>
+                        <th></th>
+                        @endauth
                         <th></th>
                     </thead>
                     <tbody>
@@ -25,15 +28,22 @@
                                 <td style="text-align: center;">{{ ucfirst($smartphone->brand) }}</td>
                                 <td style="text-align: center;">{{ ucfirst($smartphone->name) }}</td>
                                 <td style="text-align: center;">{{ $smartphone->main_cam }}MP</td>
-                                <td style="text-align: center;">{{ $smartphone->price }} R$</td>
+                                <td style="text-align: center;">R$ {{ $smartphone->price }}</td>
+                                @auth
                                 <td>
-                                    <a class="btn btn-primary a-btn-slide-text btn-sm" href="/smartphones/{{$smartphone->id}}/edit"><i class="fas fa-edit fa-sm"></i></a>
+                                    <a class="btn btn-primary btn-sm" href="/smartphones/{{$smartphone->id}}/edit"><i class="fas fa-edit fa-sm"></i></a>
                                 </td>
+                                @endauth
+                                <td>
+                                    <a class="btn btn-primary btn-sm" href="/smartphones/{{$smartphone->id}}/view"><i class="fas fa-eye fa-sm"></i></a>
+                                </td>
+                                @auth
                                 <td>
                                     {{ Form::open(['method' => 'delete', 'url' => 'smartphones/'.$smartphone->id]) }}
-                                        <button class="btn btn-danger a-btn-slide-text btn-sm" type="submit"><i class="fas fa-trash-alt fa-sm"></i></button>
+                                        <button class="btn btn-danger btn-sm" type="submit"><i class="fas fa-trash-alt fa-sm"></i></button>
                                     {{ Form::close() }}
                                 </td>
+                                @endauth
 
                             </tr>
                         @endforeach

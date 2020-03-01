@@ -14,6 +14,7 @@
 Route::get('/',  'HomeController@index');
 Route::get('smartphones',  'SmartphoneController@index');
 Route::get('smartphones/form',  'SmartphoneController@form');
+Route::get('smartphones/{smartphones}/view',  'SmartphoneController@view');
 Route::get('smartphones/{smartphones}/edit/',  'SmartphoneController@edit');
 Route::patch('smartphones/{smartphones}',  'SmartphoneController@update');
 Route::delete('smartphones/{smartphones}',  'SmartphoneController@delete');
