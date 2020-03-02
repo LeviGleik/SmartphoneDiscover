@@ -5,9 +5,11 @@
         <div class="card">
             <div class="card-header">
 				Smartphones
+                @auth
             	<div class="col-md-offset-2 float-right">
                     <a class="btn btn-primary btn-sm" href="{{ url('smartphones/form') }}">Add</a>
                 </div>
+                @endauth
             </div>
             <div class="card-body">
                 <table class="table">

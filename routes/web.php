@@ -13,9 +13,9 @@
 
 Route::get('/',  'HomeController@index');
 Route::get('smartphones',  'SmartphoneController@index');
-Route::get('smartphones/form',  'SmartphoneController@form');
+Route::get('smartphones/form',  'SmartphoneController@form')->middleware('auth');
 Route::get('smartphones/{smartphones}/view',  'SmartphoneController@view');
-Route::get('smartphones/{smartphones}/edit/',  'SmartphoneController@edit');
+Route::get('smartphones/{smartphones}/edit/',  'SmartphoneController@edit')->middleware('auth');
 Route::patch('smartphones/{smartphones}',  'SmartphoneController@update');
 Route::delete('smartphones/{smartphones}',  'SmartphoneController@delete');
 Route::post('smartphones/save',  'SmartphoneController@save');
@@ -23,3 +23,4 @@ Route::post('smartphones/save',  'SmartphoneController@save');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/smartphones/fetch', 'SmartphoneController@fetch')->name('smartphones.fetch');

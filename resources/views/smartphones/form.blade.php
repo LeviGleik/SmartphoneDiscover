@@ -37,85 +37,87 @@
                     @elseif(Request::is('*/view'))
                         {{ Form::model($smartphones, ['method'  => 'PATCH', 'url' => 'smartphones/'.$smartphones->id]) }}
                     @else
-                        {{ Form::open(['url' => 'smartphones/save']) }}
+                        {{ Form::open(['autocomplete' => 'off', 'url' => 'smartphones/save']) }}
                     @endif
                         {{ Form::label('brand', 'Brand') }}
-                        @if(Request::is('*/view'))
+                    @if(Request::is('*/view'))
                         {{ Form::select('brand', ['apple' => 'Apple', 'apple' => 'Apple', 'lg' => 'LG', 'motorola' => 'Motorola', 'samsung' => 'Samsung'], null, ['disabled' => 'disabled', 'class' => 'form-control', 'id' => 'brand']) }}
-                        @else
+                    @else
                         {{ Form::select('brand', ['apple' => 'Apple', 'apple' => 'Apple', 'lg' => 'LG', 'motorola' => 'Motorola', 'samsung' => 'Samsung'], null, ['class' => 'form-control', 'id' => 'brand']) }}
-                        @endif
+                    @endif
 
-                        {{ Form::label('name', 'Device Name') }}
+                    {{ Form::label('name', 'Device Name') }}
 
-                        @if(Request::is('*/view'))
+                    @if(Request::is('*/view'))
                         {{ Form::input('text', 'name', null, ['disabled' => 'disabled', 'class' => 'form-control', 'id' => 'name']) }}
-                        @else
-                        {{ Form::input('text', 'name', null, ['class' => 'form-control', 'id' => 'name']) }}
-                        @endif
-
-                        {{ Form::label('year', 'Launch Year') }}
-                        <div class="form-control">
-                            @if(Request::is('*/edit'))
+                    @else
+                        {{ Form::input('text', 'name', null, ['autocomplete' => 'off', 'class' => 'form-control', 'id' => 'name']) }}
+                    @endif
+                        
+                    <div class="box" id="countryList"></div>
+                        
+                    {{ Form::label('year', 'Launch Year') }}
+                    <div class="form-control">
+                        @if(Request::is('*/edit'))
                             {{ Form::input('number', 'year', null, ['id' => 'year', 'data-slider-value'=>$smartphones['year']]) }}
-                            @elseif(Request::is('*/view'))
+                        @elseif(Request::is('*/view'))
                             {{ Form::input('number', 'year', null, ['data-slider-enabled' => 'false', 'id' => 'year', 'data-slider-value'=>$smartphones['year']]) }}
-                            @else
+                        @else
                             {{ Form::input('number', 'year', null, ['id' => 'year']) }}
                             @endif
-                        </div> 
+                    </div> 
                         <br />
 
-                        {{ Form::label('chipset', 'Chipset') }}
-                        @if(Request::is('*/view'))                    
+                    {{ Form::label('chipset', 'Chipset') }}
+                    @if(Request::is('*/view'))                    
                         {{ Form::select('chipset', ['s865' => 'Snapdragon 865', 's855p' => 'Snapdragon 855+', 's855' => 'Snapdragon 855', 's845' => 'Snapdragon 845', 's835' => 'Snapdragon 835', 's821' => 'Snapdragon 821', 's820' => 'Snapdragon 820', 's765g' => 'Snapdragon 765G', 's730g' => 'Snapdragon 730G', 's730' => 'Snapdragon 730', 's712' => 'Snapdragon 712', 's710' => 'Snapdragon 710', 's675' => 'Snapdragon 675', 's670' => 'Snapdragon 670', 's665' => 'Snapdragon 665', 's660' => 'Snapdragon 660', 's652' => 'Snapdragon 652', 's650' => 'Snapdragon 650', 's636' => 'Snapdragon 636', 's630' => 'Snapdragon 630', 's625' => 'Snapdragon 625', 's450' => 'Snapdragon 450', 's439' => 'Snapdragon 439', 's435' => 'Snapdragon 435', 's430' => 'Snapdragon 430', 's425' => 'Snapdragon 425', 'e9825' => 'Exynos 9825', 'e9820' => 'Exynos 9820', 'e9810' => 'Exynos 9810', 'e9611' => 'Exynos 9611', 'e9610' => 'Exynos 9610', 'e8895' => 'Exynos 8895', 'e8890' => 'Exynos 8890', 'e7904' => 'Exynos 7904', 'e7884' => 'Exynos 7884', 'e7870' => 'Exynos 7870', 'e7580' => 'Exynos 7580', 'e7420' => 'Exynos 7420', 'hx25' => 'Helio X25', 'hx20' => 'Helio X20', 'hx10' => 'Helio X10', 'hg90t' => 'Helio G90T', 'hp70' => 'Helio P70', 'hp65' => 'Helio P65','hp60' => 'Helio P60', 'hp25' => 'Helio P25', 'hp23' => 'Helio P23', 'hp20' => 'Helio P20', 'hp10' => 'Helio P10', 'k990' => 'Kirin 990', 'k980' => 'Kirin 980', 'k970' => 'Kirin 970', 'k960' => 'Kirin 960', 'k659' => 'Kirin 659'], null, ['disabled' => 'disabled', 'class' => 'form-control', 'id' => 'chipset']) }}
-                        @else
+                    @else
                         {{ Form::select('chipset', ['s865' => 'Snapdragon 865', 's855p' => 'Snapdragon 855+', 's855' => 'Snapdragon 855', 's845' => 'Snapdragon 845', 's835' => 'Snapdragon 835', 's821' => 'Snapdragon 821', 's820' => 'Snapdragon 820', 's765g' => 'Snapdragon 765G', 's730g' => 'Snapdragon 730G', 's730' => 'Snapdragon 730', 's712' => 'Snapdragon 712', 's710' => 'Snapdragon 710', 's675' => 'Snapdragon 675', 's670' => 'Snapdragon 670', 's665' => 'Snapdragon 665', 's660' => 'Snapdragon 660', 's652' => 'Snapdragon 652', 's650' => 'Snapdragon 650', 's636' => 'Snapdragon 636', 's630' => 'Snapdragon 630', 's625' => 'Snapdragon 625', 's450' => 'Snapdragon 450', 's439' => 'Snapdragon 439', 's435' => 'Snapdragon 435', 's430' => 'Snapdragon 430', 's425' => 'Snapdragon 425', 'e9825' => 'Exynos 9825', 'e9820' => 'Exynos 9820', 'e9810' => 'Exynos 9810', 'e9611' => 'Exynos 9611', 'e9610' => 'Exynos 9610', 'e8895' => 'Exynos 8895', 'e8890' => 'Exynos 8890', 'e7904' => 'Exynos 7904', 'e7884' => 'Exynos 7884', 'e7870' => 'Exynos 7870', 'e7580' => 'Exynos 7580', 'e7420' => 'Exynos 7420', 'hx25' => 'Helio X25', 'hx20' => 'Helio X20', 'hx10' => 'Helio X10', 'hg90t' => 'Helio G90T', 'hp70' => 'Helio P70', 'hp65' => 'Helio P65','hp60' => 'Helio P60', 'hp25' => 'Helio P25', 'hp23' => 'Helio P23', 'hp20' => 'Helio P20', 'hp10' => 'Helio P10', 'k990' => 'Kirin 990', 'k980' => 'Kirin 980', 'k970' => 'Kirin 970', 'k960' => 'Kirin 960', 'k659' => 'Kirin 659'], null, ['class' => 'form-control', 'id' => 'chipset']) }}
-                        @endif
+                    @endif
 
-                        {{ Form::label('mem_ram', 'Ram Memory') }}
+                    {{ Form::label('mem_ram', 'Ram Memory') }}
                         <div class="form-control">
-                            @if(Request::is('*/edit'))
+                        @if(Request::is('*/edit'))
                             {{ Form::input('text','mem_ram', null, ['id' => 'mem_ram', 'data-slider-value'=>$smartphones['mem_ram']]) }}
-                            @elseif(Request::is('*/view'))
+                        @elseif(Request::is('*/view'))
                             {{ Form::input('text','mem_ram', null, ['data-slider-enabled' => 'false', 'id' => 'mem_ram', 'data-slider-value'=>$smartphones['mem_ram']]) }}
-                            @else
+                        @else
                             {{ Form::input('text','mem_ram', null, ['id' => 'mem_ram']) }}
-                            @endif
+                        @endif
                             </div>
                         <br />
 
-                        {{ Form::label('mem_int', 'Internal Memory') }}
+                    {{ Form::label('mem_int', 'Internal Memory') }}
                         <div class="form-control">
-                            @if(Request::is('*/edit'))
+                        @if(Request::is('*/edit'))
                             {{ Form::input('text','mem_int', null, ['id' => 'mem_int', 'data-slider-value'=>$smartphones['mem_int']]) }}
-                            @elseif(Request::is('*/view'))
+                        @elseif(Request::is('*/view'))
                             {{ Form::input('text','mem_int', null, ['data-slider-enabled' => 'false', 'id' => 'mem_int', 'data-slider-value'=>$smartphones['mem_int']]) }}
-                            @else                            
+                        @else                            
                             {{ Form::input('text','mem_int', null, ['id' => 'mem_int']) }}
-                            @endif
+                        @endif
                         </div>
                         <br />
 
-                            @if(Request::is('*/edit'))
-                            <div class="custom-control custom-checkbox">
-                            {{ Form::input('checkbox', 'mem_exp_boolean', null, ['id' => 'mem_exp_boolean', $smartphones['mem_exp_boolean'] == 1 ? 'checked': '', 'class' => 'custom-control-input']) }}
+                        @if(Request::is('*/edit'))
+                        <div class="custom-control custom-checkbox">
+                        {{ Form::input('checkbox', 'mem_exp_boolean', null, ['id' => 'mem_exp_boolean', $smartphones['mem_exp_boolean'] == 1 ? 'checked': '', 'class' => 'custom-control-input']) }}
                             {{ Form::label('mem_exp_boolean', 'External Memory', ['class' => 'custom-control-label']) }}
                             </div>
 
-                            @elseif(Request::is('*/view'))
-                            <div class="custom-control custom-checkbox">
+                        @elseif(Request::is('*/view'))
+                        <div class="custom-control custom-checkbox">
                             {{ Form::input('checkbox', 'mem_exp_boolean', null, ['disabled' => 'disable', 'id' => 'mem_exp_boolean', $smartphones['mem_exp_boolean'] == 1 ? 'checked': '', 'class' => 'custom-control-input']) }}
                             {{ Form::label('mem_exp_boolean', 'External Memory', ['class' => 'custom-control-label']) }}
-                            </div>
+                        </div>
 
-                            @else
-                            <div class="custom-control custom-checkbox">
+                        @else
+                        <div class="custom-control custom-checkbox">
                             {{ Form::input('checkbox', 'mem_exp_boolean', null, ['id' => 'mem_exp_boolean', 'class' => 'custom-control-input']) }}
 
                             {{ Form::label('mem_exp_boolean', 'External Memory', ['class' => 'custom-control-label']) }}
-                            </div>
-                            @endif
+                        </div>
+                        @endif
                              
                         <br />
 
@@ -190,6 +192,7 @@
                         {{ Form::submit('Save', ['class' => 'btn btn-group btn-primary', 'id' => 'submit']) }}
                         {{ Form::submit('Save As New', ['class' => 'btn float-right btn-group btn-primary', 'id' => 'submitAsNew']) }}
                         @endif
+                    {{ csrf_field() }}
                     {{ Form::close() }}
                 </div>
             </div>
@@ -295,8 +298,30 @@
             },
             step: 100
         });
+         $('#name').keyup(function(){ 
+            var query = $(this).val();
+            if(query != '') {
+             var _token = $('input[name="_token"]').val();
+             $.ajax({
+              url:"{{ route('smartphones.fetch') }}",
+              method:"POST",
+              data:{query:query, _token:_token},
+              success:function(data){
+               $('#countryList').fadeIn();  
+               $('#countryList').html(data);
+              }
+             });
+            }
+        });
+
+        $(document).on('click', 'li', function(){  
+            $('#name').val($(this).text());  
+            $('#countryList').fadeOut();
+
+            window.location.replace("/smartphones/"+$(this).val()+"/edit");
+        });  
+
     });
-    
 </script>
 <style type="text/css">
     .slider.slider-horizontal {
@@ -323,5 +348,9 @@
     #price .slider-handle {
         border-bottom-color: blue;
     }
+    .box{
+    width:600px;
+    margin:0 auto;
+   }
 </style>
 @endsection

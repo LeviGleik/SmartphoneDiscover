@@ -6,6 +6,8 @@ use App\Smartphone;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use DB;
+
 
 class SmartphoneController extends Controller
 {
@@ -82,5 +84,26 @@ class SmartphoneController extends Controller
         $smartphone = Smartphone::FindOrFail($id);
         $smartphone->delete();
         return Redirect::to('smartphones');
+    }
+    function fetch(Request $request)
+    {
+     if($request->get('query'))
+     {
+      $query = $request->get('query');
+      $id = null;
+      $data = DB::table('smartphones')
+        ->where('name', 'LIKE', "%{$query}%")
+        ->get();
+      $output = '<ul class="dropdown-menu" style="display:block; position:relative">';
+      foreach($data as $row)
+      {
+       $output .= '
+       <li value="'.$row->id.'"><a class="dropdown-item" href="#">'.$row->name.'&nbsp;'.$row->mem_int.'&nbsp;GB'.'</a></li>
+       ';
+      }
+      // $id = $data->id;
+      $output .= '</ul>';
+      echo $output;
+     }
     }
 }
