@@ -203,12 +203,6 @@
 @section('test')
 <script type="text/javascript">
     $(document).ready(function() {
-        // $("#mem_exp_boolean").change(function() {
-        //     var $input = $(this);
-        //     if(!$input.prop("checked")){
-        //         !$input.removeProp("checked");
-        //     }
-        // }).change();
         $("#year").slider({
             ticks: [2015, 2016, 2017, 2018, 2019, 2020],
             tooltip_position: 'bottom',
@@ -308,18 +302,22 @@
               data:{query:query, _token:_token},
               success:function(data){
                $('#countryList').fadeIn();  
-               $('#countryList').html(data);
+               $('#countryList').html(data[1]);
+               ldata(data[0]);
               }
              });
             }
         });
+        function ldata(data){
+            $(document).on('click', 'li', function(){  
+                var id = $(this).prop("id")-1;
+                $("#name").val(data[$(this).val()].name);  
+                $("#brand").val(data[$(this).val()].brand);  
+                $('#countryList').fadeOut();
 
-        $(document).on('click', 'li', function(){  
-            $('#name').val($(this).text());  
-            $('#countryList').fadeOut();
-
-            window.location.replace("/smartphones/"+$(this).val()+"/edit");
-        });  
+                // window.location.replace("/smartphones/"+$(this).val()+"/edit");
+            });  
+        }
 
     });
 </script>

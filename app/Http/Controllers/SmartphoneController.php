@@ -90,20 +90,20 @@ class SmartphoneController extends Controller
      if($request->get('query'))
      {
       $query = $request->get('query');
-      $id = null;
       $data = DB::table('smartphones')
         ->where('name', 'LIKE', "%{$query}%")
         ->get();
-      $output = '<ul class="dropdown-menu" style="display:block; position:relative">';
-      foreach($data as $row)
-      {
+      $output = '<ol class="dropdown-menu" style="display:block; position:relative">';
+      $i = 0;
+      foreach($data as $row){
        $output .= '
-       <li value="'.$row->id.'"><a class="dropdown-item" href="#">'.$row->name.'&nbsp;'.$row->mem_int.'&nbsp;GB'.'</a></li>
+       <li value="'.$i.'" id="'.$row->id.'"><a class="dropdown-item" href="#">'.$row->name.'&nbsp;'.$row->mem_int.'&nbsp;GB'.'</a></li>
        ';
+       $i++;
       }
-      // $id = $data->id;
-      $output .= '</ul>';
-      echo $output;
+      $output .= '</ol>';
+      $ldata = [$data,$output];
+      return $ldata;
      }
     }
 }
