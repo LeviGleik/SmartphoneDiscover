@@ -23,6 +23,7 @@ Route::post('smartphones/save',  'SmartphoneController@save');
 Auth::routes();
 
 Route::get('/home/beginner', 'HomeController@beginner')->name('beginner');
+Route::post('/home/beginnerSave', 'HomeController@beginnerSave')->name('beginnerSave');
 Route::get('/home/intermediate', 'HomeController@intermediate')->name('intermediate');
 Route::get('/home/advanced', 'HomeController@advanced')->name('advanced');
 

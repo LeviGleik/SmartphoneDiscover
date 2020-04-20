@@ -102,8 +102,8 @@
                         @if(Request::is('*/edit'))
                         <div class="custom-control custom-checkbox">
                         {{ Form::input('checkbox', 'mem_exp_boolean', null, ['id' => 'mem_exp_boolean', $smartphones['mem_exp_boolean'] == 1 ? 'checked': '', 'class' => 'custom-control-input']) }}
-                            {{ Form::label('mem_exp_boolean', 'External Memory', ['class' => 'custom-control-label']) }}
-                            </div>
+                        {{ Form::label('mem_exp_boolean', 'External Memory', ['class' => 'custom-control-label']) }}
+                        </div>
 
                         @elseif(Request::is('*/view'))
                         <div class="custom-control custom-checkbox">
