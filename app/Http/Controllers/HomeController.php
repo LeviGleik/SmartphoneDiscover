@@ -31,6 +31,12 @@ class HomeController extends Controller
         return view('home.advanced');
     }
     public function beginnerSave(){
-        
+        return view('home.beginner');
+    }
+    public function intermediateSave(){
+        return view('home.intermediate');
+    }
+    public function advancedSave(){
+        return view('home.advanced');
     }
 }

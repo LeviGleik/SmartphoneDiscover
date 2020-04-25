@@ -25,7 +25,9 @@ Auth::routes();
 Route::get('/home/beginner', 'HomeController@beginner')->name('beginner');
 Route::post('/home/beginnerSave', 'HomeController@beginnerSave')->name('beginnerSave');
 Route::get('/home/intermediate', 'HomeController@intermediate')->name('intermediate');
+Route::post('/home/intermediateSave', 'HomeController@intermediateSave')->name('intermediateSave');
 Route::get('/home/advanced', 'HomeController@advanced')->name('advanced');
+Route::post('/home/advancedSave', 'HomeController@advancedSave')->name('advancedSave');
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/smartphones/fetch', 'SmartphoneController@fetch')->name('smartphones.fetch');
