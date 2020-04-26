@@ -12,7 +12,7 @@
                 {{ Form::input('text', 'performance', null, ['data-slider-id' =>'performance', 'id' => 'performance']) }}
             </div>
 		</div>
-	</div><br />
+	</div>
 	<div class="row">
 		<div class="col-md-3">
 			{{ Form::label('camera', 'Camera') }}
@@ -20,7 +20,7 @@
                 {{ Form::input('text', 'camera', null, ['data-slider-id' =>'camera', 'id' => 'camera']) }}
             </div>
 		</div>
-	</div><br />
+	</div>
 	<div class="row">
 		<div class="col-md-3">
 			{{ Form::label('battery', 'Battery') }}
@@ -28,7 +28,7 @@
                 {{ Form::input('text', 'battery', null, ['data-slider-id' =>'battery', 'id' => 'battery']) }}
             </div>
 		</div>
-	</div><br />
+	</div>
 	<div class="row">
 		<div class="col-md-3">
 			{{ Form::label('memory', 'Memory') }}
@@ -36,7 +36,7 @@
                 {{ Form::input('text', 'memory', null, ['data-slider-id' =>'memory', 'id' => 'memory']) }}
             </div>
 		</div>
-	</div><br />
+	</div>
 	<div class="row">
 		<div class="col-md-3">
 			{{ Form::label('price', 'Price') }}
@@ -45,7 +45,7 @@
             </div>
 		</div>
 	</div><br />
-	{{ Form::submit('Save', ['class' => 'btn btn-group btn-primary', 'id' => 'submit']) }}
+	{{ Form::submit('Search', ['class' => 'btn btn-group btn-primary', 'id' => 'submit']) }}
 	{{ Form::close() }}
 </div>
 <script type="text/javascript">

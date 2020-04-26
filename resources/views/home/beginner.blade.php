@@ -55,7 +55,7 @@
             </div>
 		</div>
 	</div><br />
-	{{ Form::submit('Save', ['class' => 'btn btn-group btn-primary', 'id' => 'submit']) }}
+	{{ Form::submit('Search', ['class' => 'btn btn-group btn-primary', 'id' => 'submit']) }}
 	{{ Form::close() }}
 </div>
 @endsection

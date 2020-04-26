@@ -5,7 +5,7 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
-					Cadastro
+					Register
                     <div class="col-md-offset-2 float-right">
                         <a class="btn btn-primary btn-sm" href="{{ url('smartphones') }}">Back</a>
                     </div>
