@@ -23,16 +23,13 @@ Route::post('smartphones/save',  'SmartphoneController@save');
 Auth::routes();
 
 Route::get('/home/beginner', 'HomeController@beginner')->name('beginner');
-Route::post('/home/beginnerSave', 'HomeController@beginnerSave')->name('beginnerSave');
 Route::post('/home/beginnerSearch', 'HomeController@beginnerSearch')->name('beginnerSearch');
 
 Route::get('/home/intermediate', 'HomeController@intermediate')->name('intermediate');
-Route::post('/home/intermediateSave', 'HomeController@intermediateSave')->name('intermediateSave');
 Route::post('/home/intermediateSearch', 'HomeController@intermediateSearch')->name('intermediateSearch');
 
 Route::get('/home/advanced', 'HomeController@advanced')->name('advanced');
-Route::post('/home/advancedSave', 'HomeController@advancedSave')->name('advancedSave');
-Route::get('/home/advancedSearch', 'HomeController@advancedSearch')->name('advancedSearch');
+Route::post('/home/advancedSearch', 'HomeController@advancedSearch')->name('advancedSearch');
 
 
 Route::get('/home', 'HomeController@index')->name('home');
