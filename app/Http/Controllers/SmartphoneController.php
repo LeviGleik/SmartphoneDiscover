@@ -12,12 +12,12 @@ use DB;
 class SmartphoneController extends Controller
 {
 	public function index(){
-        $smartphones = Smartphone::get();
-        $smartphones = Smartphone::sortable()->paginate(10);
+    $smartphones = Smartphone::get();
+    $smartphones = Smartphone::sortable()->paginate(10);
 		return view('smartphones.list', ['smartphones' => $smartphones]);
 	}  
 	public function form(){
-        $smartphones = Smartphone::get();
+    $smartphones = Smartphone::get();
 		return view('smartphones.form', ['smartphones' => $smartphones]);
 	}
 	public function save(Request $request){
@@ -64,46 +64,42 @@ class SmartphoneController extends Controller
     }
     public function view($id){
     	$smartphone = Smartphone::FindOrFail($id);
-        return view('smartphones/form', ['smartphones' => $smartphone]);
+      return view('smartphones/form', ['smartphones' => $smartphone]);
     }
     public function edit($id){
-
-        $smartphone = Smartphone::FindOrFail($id);
-        return view('smartphones/form', ['smartphones' => $smartphone]);
+      $smartphone = Smartphone::FindOrFail($id);
+      return view('smartphones/form', ['smartphones' => $smartphone]);
     }
     public function update($id, Request $request){
-
-		$request['mem_exp_boolean'] = (!isset($request['mem_exp_boolean']))? false : true;
-        $smartphone = Smartphone::FindOrFail($id);
-        $smartphone->update($request->all());
-        \Session::flash('msg_update', 'Smartphone updated successfully.');
-        return Redirect::to('smartphones/'.$smartphone->id.'/edit');
+  		$request['mem_exp_boolean'] = (!isset($request['mem_exp_boolean']))? false : true;
+      $smartphone = Smartphone::FindOrFail($id);
+      $smartphone->update($request->all());
+      \Session::flash('msg_update', 'Smartphone updated successfully.');
+      return Redirect::to('smartphones/'.$smartphone->id.'/edit');
     }
     public function delete($id){
-        \Session::flash('msg_deleted', 'Smartphone deleted successfully.');
-        $smartphone = Smartphone::FindOrFail($id);
-        $smartphone->delete();
-        return Redirect::to('smartphones');
+      \Session::flash('msg_deleted', 'Smartphone deleted successfully.');
+      $smartphone = Smartphone::FindOrFail($id);
+      $smartphone->delete();
+      return Redirect::to('smartphones');
     }
-    function fetch(Request $request)
-    {
-     if($request->get('query'))
-     {
-      $query = $request->get('query');
-      $data = DB::table('smartphones')
-        ->where('name', 'LIKE', "%{$query}%")
-        ->get();
-      $output = '<ol class="dropdown-menu" style="display:block; position:relative">';
-      $i = 0;
-      foreach($data as $row){
-       $output .= '
-       <li value="'.$i.'" id="'.$row->id.'"><a class="dropdown-item" href="#">'.$row->name.'&nbsp;'.$row->mem_int.'&nbsp;GB'.'</a></li>
-       ';
-       $i++;
+    public function fetch(Request $request){
+      if($request->get('query')){
+        $query = $request->get('query');
+        $data = DB::table('smartphones')
+          ->where('name', 'LIKE', "%{$query}%")
+          ->get();
+        $output = '<ol class="dropdown-menu" style="display:block; position:relative">';
+        $i = 0;
+        foreach($data as $row){
+          $output .= '
+          <li value="'.$i.'" id="'.$row->id.'"><a class="dropdown-item" href="#">'.$row->name.'&nbsp;'.$row->mem_int.'&nbsp;GB'.'</a></li>
+          ';
+          $i++;
+        } 
+        $output .= '</ol>';
+        $ldata = [$data,$output];
+        return $ldata;
       }
-      $output .= '</ol>';
-      $ldata = [$data,$output];
-      return $ldata;
-     }
     }
 }
