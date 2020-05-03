@@ -4,7 +4,7 @@
 	<div class="alert alert-danger" style="display: none">
         You can't select more than 3 itens
     </div>
-	{{ Form::open(['url' => 'home/intermediateSave']) }}
+	{{ Form::open(['url' => 'home/intermediateSearch']) }}
 	<div class="row">
 		<div class="col-md-3">
 			{{ Form::label('performance', 'Performance') }}

@@ -4,7 +4,7 @@
     <div class="alert alert-danger" style="display: none">
         You can't select more than 3 itens
     </div>
-	{{ Form::open(['url' => 'home/beginnerSave']) }}
+	{{ Form::open(['url' => 'home/beginnerSearch']) }}
 	<div class="row">
 		<div class="col-md">
 			<div class="btn btn-outline-primary">					
