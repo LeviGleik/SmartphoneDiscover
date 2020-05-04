@@ -14,10 +14,10 @@
             <div class="card-body">
                 <table class="table">
                     <thead>
-                        <th style="text-align: center;">@sortablelink('brand')</th>
-                        <th style="text-align: center;">@sortablelink('name')</th>
-                        <th style="text-align: center;">@sortablelink('main_cam', 'Main Camera')</th>
-                        <th style="text-align: center;">@sortablelink('price')</th>
+                        <th style="text-align: center;">Brand</th>
+                        <th style="text-align: center;">Name</th>
+                        <th style="text-align: center;">Main Camera</th>
+                        <th style="text-align: center;">Price</th>
                         @auth
                         <th></th>
                         <th></th>
@@ -51,7 +51,7 @@
                         @endforeach
                     </tbody>
                 </table>
-                {{ $smartphones->appends(\Request::except('page'))->render() }}
+                {{ $smartphones->links() }}
             </div>
         </div>
     </div>
