@@ -47,16 +47,22 @@ class HomeController extends Controller
         $chipset = $request->input('chipset');
         $mem_ram = $request->input('mem_ram');
         $mem_int = $request->input('mem_int');
-        $mem_exp_boolean = $request->input('mem_exp_boolean');
         $display = $request->input('display');
         $main_cam = $request->input('main_cam');
         $selfie_cam = $request->input('selfie_cam');
         $battery = $request->input('battery');
         $price = $request->input('price');
         $antutu = $request->input('antutu');
-
-        $data = Smartphone::where('brand', 'LIKE', "%{$brand}%")->get();
-
-        return view('smartphones.list');
+        if($request->input('mem_exp_boolean') != true){
+            $mem_exp_boolean = (null !==($request->input('mem_exp_boolean')))? 0 : 1;
+        }
+        $data = DB::table('smartphones')->where('brand', '=', "{$brand}")
+                ->where('name', '=', "{$name}")
+                ->where('year', '=', "{$year}")
+                ->where('chipset', '=', "{$chipset}")
+                ->where('mem_ram', '=', "{$mem_ram}")
+                ->where('mem_int', '=', "{$mem_int}")
+                ->where('mem_exp_boolean', '=', "{$mem_exp_boolean}")->get();
+        return view('smartphones.list', ['smartphones' => $data]);
     }
 }
