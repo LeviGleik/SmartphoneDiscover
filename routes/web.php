@@ -29,6 +29,7 @@ Route::get('/home/intermediate', 'HomeController@intermediate')->name('intermedi
 Route::post('/home/intermediateSearch', 'HomeController@intermediateSearch')->name('intermediateSearch');
 
 Route::get('/home/advanced', 'HomeController@advanced')->name('advanced');
+Route::get('/home/advancedSearch', 'HomeController@advancedSearch')->name('advancedSearch');
 Route::post('/home/advancedSearch', 'HomeController@advancedSearch')->name('advancedSearch');
 
 
