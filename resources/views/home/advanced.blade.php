@@ -14,7 +14,7 @@
 	    @endif
         {{ Form::open(['autocomplete' => 'off', 'url' => 'home/advancedSearch']) }}
 	    {{ Form::label('brand', 'Brand') }}
-        {{ Form::select('brand', ['apple' => 'Apple', 'apple' => 'Apple', 'lg' => 'LG', 'motorola' => 'Motorola', 'samsung' => 'Samsung'], null, ['class' => 'form-control', 'id' => 'brand']) }}
+        {{ Form::select('brand[]', $brand, 1, ['multiple' => '', 'class' => 'selectpicker form-control', 'id' => 'brand']) }}
 	    
 	    {{ Form::label('name', 'Device Name') }}
 	    {{ Form::input('text', 'name', null, ['class' => 'form-control', 'id' => 'name']) }}
@@ -183,6 +183,7 @@
             },
             step: 100
         });
+        // $("#brand").
     });	
 </script>
 <style type="text/css">
