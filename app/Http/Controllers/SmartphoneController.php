@@ -12,8 +12,7 @@ use DB;
 class SmartphoneController extends Controller
 {
 	public function index(){
-    $smartphones = Smartphone::get();
-    $smartphones = DB::table('smartphones')->paginate(5);
+    $smartphones = DB::table('smartphones')->paginate(8);
 		return view('smartphones.list', ['smartphones' => $smartphones]);
 	}  
 	public function form(){

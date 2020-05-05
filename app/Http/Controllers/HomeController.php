@@ -30,8 +30,12 @@ class HomeController extends Controller
     public function intermediate(){
         return view('home.intermediate');
     }
-    public function advanced(){
-        return view('home.advanced');
+    public function advanced(){        
+        $brand[1] = 'Apple';
+        $brand[2] = 'LG';   
+        $brand[3] = 'Motorola';
+        $brand[4] = 'Samsung';
+        return view('home.advanced', ['brand' => $brand]);
     }
     public function beginnerSearch(){
         return view('home.beginner');
@@ -40,29 +44,30 @@ class HomeController extends Controller
         return view('home.intermediate');
     }
     public function advancedSearch(Request $request){
-        
-        $brand = $request->input('brand');
-        $name = $request->input('name');
-        $year = $request->input('year');
-        $chipset = $request->input('chipset');
-        $mem_ram = $request->input('mem_ram');
-        $mem_int = $request->input('mem_int');
-        $display = $request->input('display');
-        $main_cam = $request->input('main_cam');
-        $selfie_cam = $request->input('selfie_cam');
-        $battery = $request->input('battery');
-        $price = $request->input('price');
-        $antutu = $request->input('antutu');
-        if($request->input('mem_exp_boolean') != true){
-            $mem_exp_boolean = (null !==($request->input('mem_exp_boolean')))? 0 : 1;
+        $input = $request->all();
+        $brand = [
+            'apple' => '1',
+            'lg' => '2',
+            'motorola' => '3',
+            'samsung' => '4'
+        ];
+        $test = [0 => '1', 1 => '4'];
+        if(!isset($input['mem_exp_boolean'])){
+            $input['mem_exp_boolean'] = 0;
+        }else{
+            $input['mem_exp_boolean'] = 1;
         }
-        $data = DB::table('smartphones')->where('brand', '=', "{$brand}")
-                ->where('name', '=', "{$name}")
-                ->where('year', '=', "{$year}")
-                ->where('chipset', '=', "{$chipset}")
-                ->where('mem_ram', '=', "{$mem_ram}")
-                ->where('mem_int', '=', "{$mem_int}")
-                ->where('mem_exp_boolean', '=', "{$mem_exp_boolean}")->get();
+        if(!isset($input['antutu']) || $input['antutu'] == null){
+            $input['antutu'] = 0;
+        }
+        if(isset($input['brand'])){
+            $input['brand'] = array_flip(array_intersect($brand, $input['brand']));
+        }
+        $smartphone = new Smartphone();
+        
+
+        \Session::put($input);
+        $data = $smartphone->advancedSearchQuery($request->session()->all());
         return view('smartphones.list', ['smartphones' => $data]);
     }
 }
