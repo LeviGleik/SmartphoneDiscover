@@ -14,7 +14,7 @@
 	    @endif
         {{ Form::open(['autocomplete' => 'off', 'url' => 'home/advancedSearch']) }}
 	    {{ Form::label('brand', 'Brand') }}
-        {{ Form::select('brand[]', $brand, 1, ['multiple' => '', 'class' => 'selectpicker form-control', 'id' => 'brand']) }}
+        {{ Form::select('brand[]', $brand, 0, ['multiple' => '', 'class' => 'selectpicker form-control', 'id' => 'brand']) }}
 	    
 	    {{ Form::label('name', 'Device Name') }}
 	    {{ Form::input('text', 'name', null, ['class' => 'form-control', 'id' => 'name']) }}
@@ -24,12 +24,12 @@
 	        
 	    {{ Form::label('year', 'Launch Year') }}
 	    <div class="form-control">
-	        {{ Form::input('number', 'year', null, ['id' => 'year']) }}
+	        {{ Form::input('text', 'year', 2015, ['id' => 'year']) }}
 	    </div> 
 	    <br />
 
 	    {{ Form::label('chipset', 'Chipset') }}               
-        {{ Form::select('chipset', ['s865' => 'Snapdragon 865', 's855p' => 'Snapdragon 855+', 's855' => 'Snapdragon 855', 's845' => 'Snapdragon 845', 's835' => 'Snapdragon 835', 's821' => 'Snapdragon 821', 's820' => 'Snapdragon 820', 's765g' => 'Snapdragon 765G', 's730g' => 'Snapdragon 730G', 's730' => 'Snapdragon 730', 's712' => 'Snapdragon 712', 's710' => 'Snapdragon 710', 's675' => 'Snapdragon 675', 's670' => 'Snapdragon 670', 's665' => 'Snapdragon 665', 's660' => 'Snapdragon 660', 's652' => 'Snapdragon 652', 's650' => 'Snapdragon 650', 's636' => 'Snapdragon 636', 's630' => 'Snapdragon 630', 's625' => 'Snapdragon 625', 's450' => 'Snapdragon 450', 's439' => 'Snapdragon 439', 's435' => 'Snapdragon 435', 's430' => 'Snapdragon 430', 's425' => 'Snapdragon 425', 'e9825' => 'Exynos 9825', 'e9820' => 'Exynos 9820', 'e9810' => 'Exynos 9810', 'e9611' => 'Exynos 9611', 'e9610' => 'Exynos 9610', 'e8895' => 'Exynos 8895', 'e8890' => 'Exynos 8890', 'e7904' => 'Exynos 7904', 'e7884' => 'Exynos 7884', 'e7870' => 'Exynos 7870', 'e7580' => 'Exynos 7580', 'e7420' => 'Exynos 7420', 'hx25' => 'Helio X25', 'hx20' => 'Helio X20', 'hx10' => 'Helio X10', 'hg90t' => 'Helio G90T', 'hp70' => 'Helio P70', 'hp65' => 'Helio P65','hp60' => 'Helio P60', 'hp25' => 'Helio P25', 'hp23' => 'Helio P23', 'hp20' => 'Helio P20', 'hp10' => 'Helio P10', 'k990' => 'Kirin 990', 'k980' => 'Kirin 980', 'k970' => 'Kirin 970', 'k960' => 'Kirin 960', 'k659' => 'Kirin 659'], null, ['class' => 'form-control', 'id' => 'chipset']) }}
+        {{ Form::select('chipset', $chipset, null, ['multiple' => '', 'class' => 'selectpicker form-control', 'id' => 'chipset']) }}
 
 	    {{ Form::label('mem_ram', 'Ram Memory') }}
         <div class="form-control">
@@ -80,9 +80,6 @@
         <div class="form-control">
             {{ Form::input('text', 'price', null, ['data-slider-id' =>'price', 'id' => 'price']) }}
         </div>
-
-        {{ Form::label('antutu', 'Antutu') }}
-        {{ Form::number('antutu', old('antutu'), ['class' => 'form-control']) }}
         <br />
         {{ Form::submit('Search', ['class' => 'btn btn-group btn-primary', 'id' => 'submit']) }}
 
@@ -100,20 +97,22 @@
             formatter: function(value){
                 return value;
             },
-            lock_to_ticks: true
+            lock_to_ticks: true,
+            range: true
         }); 
         $("#mem_ram").slider({
             ticks: [0, 1, 2, 3, 4, 6, 8, 10, 12, 16],
             tooltip_position: 'bottom',
             ticks_positions: [0, 11.11, 22.22, 33.33, 44.44, 55.55, 66.66, 77.77, 88.88, 100],
             formatter: function(value){
-                if(value == 0){
+                if(value ==  0){
                     return "512 MB";
                 }else{
                     return value + " GB";
                 }
             },
-            lock_to_ticks: true
+            lock_to_ticks: true,
+            range: true
         }); 
         $("#mem_int").slider({
             ticks: [0, 1, 2, 4, 8, 16, 32, 64, 128, 256, 512],
@@ -126,7 +125,8 @@
                     return value + " GB";
                 }
             },
-            lock_to_ticks: true
+            lock_to_ticks: true,
+            range: true
         });
         $("#main_cam").slider({
             ticks: [5, 10, 12, 16, 20, 30, 40, 48, 60, 64, 108],
@@ -135,7 +135,8 @@
             formatter: function(value){
                 return value + "MP";
             },
-            lock_to_ticks: true
+            lock_to_ticks: true,
+            range: true
         });
         $("#selfie_cam").slider({
             ticks: [5, 8, 10, 12, 16, 20, 30, 32, 40, 48, 60, 64, 108],
@@ -144,13 +145,15 @@
             formatter: function(value){
                 return value + "MP";
             },
-            lock_to_ticks: true
+            lock_to_ticks: true,
+            range: true
         });
         $("#display").slider({
             min: 4,
             max: 7,
             tooltip_position: 'bottom',
-            step: 0.1
+            step: 0.1,
+            range: true
         });
         $("#battery").slider({
             min: 100,
@@ -159,7 +162,8 @@
             formatter: function(value){
                 return value + "mAh";
             },
-            step: 100
+            step: 100,
+            range: true
         });
         $("#price").slider({
             min: 500,
@@ -181,7 +185,8 @@
                 }
                 return "R$" + value;
             },
-            step: 100
+            step: 100,
+            range: true
         });
         // $("#brand").
     });	
