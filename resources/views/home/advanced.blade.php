@@ -14,7 +14,7 @@
 	    @endif
         {{ Form::open(['autocomplete' => 'off', 'url' => 'home/advancedSearch']) }}
 	    {{ Form::label('brand', 'Brand') }}
-        {{ Form::select('brand[]', $brand, 0, ['multiple' => '', 'class' => 'selectpicker form-control', 'id' => 'brand']) }}
+        {{ Form::select('brand[]', $brand, 'apple', ['multiple' => '', 'class' => 'selectpicker form-control', 'id' => 'brand']) }}
 	    
 	    {{ Form::label('name', 'Device Name') }}
 	    {{ Form::input('text', 'name', null, ['class' => 'form-control', 'id' => 'name']) }}
@@ -29,7 +29,7 @@
 	    <br />
 
 	    {{ Form::label('chipset', 'Chipset') }}               
-        {{ Form::select('chipset', $chipset, null, ['multiple' => '', 'class' => 'selectpicker form-control', 'id' => 'chipset']) }}
+        {{ Form::select('chipset', $chipset, 's865', ['multiple' => '', 'class' => 'selectpicker form-control', 'id' => 'chipset']) }}
 
 	    {{ Form::label('mem_ram', 'Ram Memory') }}
         <div class="form-control">
@@ -188,7 +188,9 @@
             step: 100,
             range: true
         });
-        // $("#brand").
+
+        $.fn.selectpicker.Constructor.BootstrapVersion = '4';
+
     });	
 </script>
 <style type="text/css">

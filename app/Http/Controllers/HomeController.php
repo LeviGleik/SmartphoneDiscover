@@ -32,7 +32,6 @@ class HomeController extends Controller
     }
     public function advanced(){    
         $brand = [
-            0 => 'All brands',
             'apple' => 'Apple',
             'lg' => 'LG',
             'motorola' => 'Motorola',
@@ -49,12 +48,7 @@ class HomeController extends Controller
     }
     public function advancedSearch(Request $request){
         $input = $request->all();
-        $brand = [
-            1 => 'apple',
-            2 => 'lg',
-            3 => 'motorola',
-            4 => 'samsung'
-        ];
+        
         if(!isset($input['mem_exp_boolean'])){
             $input['mem_exp_boolean'] = 0;
         }else{
