@@ -64,7 +64,7 @@ class HomeController extends Controller
         // print_r($input['brand']);
         
         // var_dump($input);
-
+        $request->validate(['brand' => 'required', 'chipset' => 'required']);
         \Session::put($input);
         $data = $smartphone->advancedSearchQuery($request->session()->all());
         return view('smartphones.list', ['smartphones' => $data]);

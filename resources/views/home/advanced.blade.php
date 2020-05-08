@@ -29,7 +29,7 @@
 	    <br />
 
 	    {{ Form::label('chipset', 'Chipset') }}               
-        {{ Form::select('chipset', $chipset, 's865', ['multiple' => '', 'class' => 'selectpicker form-control', 'id' => 'chipset']) }}
+        {{ Form::select('chipset[]', $chipset, 's865', ['multiple' => '', 'class' => 'selectpicker form-control', 'id' => 'chipset']) }}
 
 	    {{ Form::label('mem_ram', 'Ram Memory') }}
         <div class="form-control">
@@ -45,7 +45,7 @@
 
 	        
         <div class="custom-control custom-checkbox">
-        	{{ Form::input('checkbox', 'mem_exp_boolean', null, ['id' => 'mem_exp_boolean', 'class' => 'custom-control-input']) }}
+        	{{ Form::input('checkbox', 'mem_exp_boolean', null, ['checked' => '', 'id' => 'mem_exp_boolean', 'class' => 'custom-control-input']) }}
 
         	{{ Form::label('mem_exp_boolean', 'External Memory', ['class' => 'custom-control-label']) }}
         </div>
