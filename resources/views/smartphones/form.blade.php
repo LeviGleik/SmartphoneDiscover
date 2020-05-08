@@ -190,7 +190,6 @@
                         <br />
                         @if(!Request::is('*/view'))
                         {{ Form::submit('Save', ['class' => 'btn btn-group btn-primary', 'id' => 'submit']) }}
-                        {{ Form::submit('Save As New', ['class' => 'btn float-right btn-group btn-primary', 'id' => 'submitAsNew']) }}
                         @endif
                     {{ csrf_field() }}
                     {{ Form::close() }}
