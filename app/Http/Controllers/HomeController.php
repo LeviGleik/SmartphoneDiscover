@@ -43,8 +43,12 @@ class HomeController extends Controller
     public function beginnerSearch(){
         return view('home.beginner');
     }
-    public function intermediateSearch(){
-        return view('home.intermediate');
+    public function intermediateSearch(Request $request){
+        $smartphone = new Smartphone();
+        \Session::put($request->all());
+        $data = $smartphone->intermediateSearchQuery($request->session()->all());
+
+        return view('smartphones.list', ['smartphones' => $data]);
     }
     public function advancedSearch(Request $request){
         $input = $request->all();
@@ -54,16 +58,7 @@ class HomeController extends Controller
         }else{
             $input['mem_exp_boolean'] = 1;
         }
-        // if(isset($input['brand']) && (in_array(0, $input['brand']))){
-        //     $input['brand'] = $brand;
-        // }
-        // if(!isset($input['brand'])){
-        //     $input['brand'] = $request->session()->input('brand');
-        // }
         $smartphone = new Smartphone();
-        // print_r($input['brand']);
-        
-        // var_dump($input);
         $request->validate(['brand' => 'required', 'chipset' => 'required']);
         \Session::put($input);
         $data = $smartphone->advancedSearchQuery($request->session()->all());

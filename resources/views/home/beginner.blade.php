@@ -2,7 +2,7 @@
 @section('beginner')
 <div class="card-body">
     <div class="alert alert-danger" style="display: none">
-        You can't select more than 3 itens
+        You can't select more than 3 itens.
     </div>
 	{{ Form::open(['url' => 'home/beginnerSearch']) }}
 	<div class="row">
