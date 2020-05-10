@@ -54,7 +54,7 @@
 
         {{ Form::label('display', 'Display Size') }}
         <div class="form-control">
-        	{{ Form::input('text', 'display', null, ['data-slider-id' =>'display', 'id' => 'display']) }}
+        	{{ Form::input('text', 'display', null, ['data-slider-id' => 'display', 'id' => 'display']) }}
         </div>
         <br />
 
@@ -116,8 +116,8 @@
         }); 
         $("#mem_int").slider({
             ticks: [0, 1, 2, 4, 8, 16, 32, 64, 128, 256, 512],
-            tooltip_position: 'bottom',
             ticks_positions: [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100],
+            tooltip_position: 'bottom',
             formatter: function(value){
                 if(value == 0){
                     return "512 MB";

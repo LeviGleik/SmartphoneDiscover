@@ -138,4 +138,15 @@ class Smartphone extends Model
 				whereBetween('mem_int', $memory)->
 				paginate(8);
     }
+    public function beginnerSearchQuery($input){
+		// var_dump($input);
+
+    	$i = 0;
+    	$data = $this->whereBetween('price', explode(",", $input['price']))->get()->toArray();
+    	// foreach ($data as $key) {
+    	// 	$antutu[$i++] = $key['antutu'];
+    	// }
+		// print_r(max($antutu));
+		return $this->whereBetween('price', explode(",", $input['price']))->paginate(8);
+    }
 }

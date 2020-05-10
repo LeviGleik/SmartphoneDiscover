@@ -25,16 +25,4 @@
         </div>
     </div>
 </div>
-<script type="text/javascript">
-	var limit = 3;
-	$('input.custom-control-input').on('change', function(evt) {
-	    if($('[name="checkboxes[]"]:checked').length > limit) {
-	       this.checked = false;
-	       $("div.alert.alert-danger").css("display", "");
-	   } else{
-	       $("div.alert.alert-danger").css("display", "none");
-	   }
-	});
-	
-</script>
 @endsection
