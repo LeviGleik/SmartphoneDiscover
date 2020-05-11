@@ -7,7 +7,7 @@
 				Smartphones
                 @auth
             	<div class="col-md-offset-2 float-right">
-                    <a class="btn btn-primary btn-sm" href="{{ url('smartphones/form') }}">Add</a>
+                    <a class="btn btn-outline-primary btn-sm" href="{{ url('smartphones/form') }}">Add</a>
                 </div>
                 @endauth
             </div>
@@ -17,6 +17,7 @@
                         <th style="text-align: center;">Brand</th>
                         <th style="text-align: center;">Name</th>
                         <th style="text-align: center;">Main Camera</th>
+                        <th style="text-align: center;">Internal Memory</th>
                         <th style="text-align: center;">Price</th>
                         @auth
                         <th></th>
@@ -30,19 +31,20 @@
                                 <td style="text-align: center;">{{ ucfirst($smartphone->brand) }}</td>
                                 <td style="text-align: center;">{{ ucfirst($smartphone->name) }}</td>
                                 <td style="text-align: center;">{{ $smartphone->main_cam }}MP</td>
+                                <td style="text-align: center;">{{ $smartphone->mem_int }}GB</td>
                                 <td style="text-align: center;">R$ {{ $smartphone->price }}</td>
                                 @auth
                                 <td>
-                                    <a class="btn btn-primary btn-sm" href="/smartphones/{{$smartphone->id}}/edit"><i class="fas fa-edit fa-sm"></i></a>
+                                    <a class="btn btn-outline-primary btn-sm" href="/smartphones/{{$smartphone->id}}/edit"><i class="fas fa-edit fa-sm"></i></a>
                                 </td>
                                 @endauth
                                 <td>
-                                    <a class="btn btn-primary btn-sm" href="/smartphones/{{$smartphone->id}}/view"><i class="fas fa-eye fa-sm"></i></a>
+                                    <a class="btn btn-outline-primary btn-sm" href="/smartphones/{{$smartphone->id}}/view"><i class="fas fa-eye fa-sm"></i></a>
                                 </td>
                                 @auth
                                 <td>
                                     {{ Form::open(['method' => 'delete', 'url' => 'smartphones/'.$smartphone->id]) }}
-                                        <button class="btn btn-danger btn-sm" type="submit"><i class="fas fa-trash-alt fa-sm"></i></button>
+                                        <button class="btn btn-outline-danger btn-sm" type="submit"><i class="fas fa-trash-alt fa-sm"></i></button>
                                     {{ Form::close() }}
                                 </td>
                                 @endauth
@@ -52,6 +54,8 @@
                     </tbody>
                 </table>
                 {{ $smartphones->links() }}
+                {{ $smartphones->total() }}
+                results.
             </div>
         </div>
     </div>
