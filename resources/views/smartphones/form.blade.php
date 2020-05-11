@@ -40,10 +40,11 @@
                         {{ Form::open(['autocomplete' => 'off', 'url' => 'smartphones/save']) }}
                     @endif
                         {{ Form::label('brand', 'Brand') }}
-                    @if(Request::is('*/view'))
-                        {{ Form::select('brand', ['apple' => 'Apple', 'apple' => 'Apple', 'lg' => 'LG', 'motorola' => 'Motorola', 'samsung' => 'Samsung'], null, ['disabled' => 'disabled', 'class' => 'form-control', 'id' => 'brand']) }}
-                    @else
                         {{ Form::select('brand', ['apple' => 'Apple', 'apple' => 'Apple', 'lg' => 'LG', 'motorola' => 'Motorola', 'samsung' => 'Samsung'], null, ['class' => 'form-control', 'id' => 'brand']) }}
+                    @if(Request::is('*/view'))
+                        <script type="text/javascript">
+                            $("#brand").prop("disabled", true);
+                        </script>
                     @endif
 
                     {{ Form::label('name', 'Device Name') }}
@@ -69,18 +70,19 @@
                         <br />
 
                     {{ Form::label('chipset', 'Chipset') }}
+                    {{ Form::select('chipset', ['a13' => 'Apple A13 Bionic', 'a12z' => 'Apple A12Z Bionic', 'a12x' => 'Apple A12X Bionic', 'a12' => 'Apple A12 Bionic', 'a11' => 'Apple A11 Bionic', 'a10x' => 'Apple A10X Fusion', 'a10' => 'Apple A10 Fusion','a9x' => 'Apple A9X',  'a9' => 'Apple A9', 's865' => 'Snapdragon 865', 's855p' => 'Snapdragon 855+', 's855' => 'Snapdragon 855', 's845' => 'Snapdragon 845', 's835' => 'Snapdragon 835', 's821' => 'Snapdragon 821', 's820' => 'Snapdragon 820', 's765g' => 'Snapdragon 765G', 's730g' => 'Snapdragon 730G', 's730' => 'Snapdragon 730', 's712' => 'Snapdragon 712', 's710' => 'Snapdragon 710', 's675' => 'Snapdragon 675', 's670' => 'Snapdragon 670', 's665' => 'Snapdragon 665', 's660' => 'Snapdragon 660', 's652' => 'Snapdragon 652', 's650' => 'Snapdragon 650', 's636' => 'Snapdragon 636', 's630' => 'Snapdragon 630', 's625' => 'Snapdragon 625', 's450' => 'Snapdragon 450', 's439' => 'Snapdragon 439', 's435' => 'Snapdragon 435', 's430' => 'Snapdragon 430', 's425' => 'Snapdragon 425', 'e9825' => 'Exynos 9825', 'e9820' => 'Exynos 9820', 'e9810' => 'Exynos 9810', 'e9611' => 'Exynos 9611', 'e9610' => 'Exynos 9610', 'e8895' => 'Exynos 8895', 'e8890' => 'Exynos 8890', 'e7904' => 'Exynos 7904', 'e7884' => 'Exynos 7884', 'e7870' => 'Exynos 7870', 'e7580' => 'Exynos 7580', 'e7420' => 'Exynos 7420', 'hx25' => 'Helio X25', 'hx20' => 'Helio X20', 'hx10' => 'Helio X10', 'hg90t' => 'Helio G90T', 'hp70' => 'Helio P70', 'hp65' => 'Helio P65','hp60' => 'Helio P60', 'hp25' => 'Helio P25', 'hp23' => 'Helio P23', 'hp20' => 'Helio P20', 'hp10' => 'Helio P10', 'k990' => 'Kirin 990', 'k980' => 'Kirin 980', 'k970' => 'Kirin 970', 'k960' => 'Kirin 960', 'k659' => 'Kirin 659'], old('chipset'), ['class' => 'form-control', 'id' => 'chipset']) }}
                     @if(Request::is('*/view'))                    
-                        {{ Form::select('chipset', ['s865' => 'Snapdragon 865', 's855p' => 'Snapdragon 855+', 's855' => 'Snapdragon 855', 's845' => 'Snapdragon 845', 's835' => 'Snapdragon 835', 's821' => 'Snapdragon 821', 's820' => 'Snapdragon 820', 's765g' => 'Snapdragon 765G', 's730g' => 'Snapdragon 730G', 's730' => 'Snapdragon 730', 's712' => 'Snapdragon 712', 's710' => 'Snapdragon 710', 's675' => 'Snapdragon 675', 's670' => 'Snapdragon 670', 's665' => 'Snapdragon 665', 's660' => 'Snapdragon 660', 's652' => 'Snapdragon 652', 's650' => 'Snapdragon 650', 's636' => 'Snapdragon 636', 's630' => 'Snapdragon 630', 's625' => 'Snapdragon 625', 's450' => 'Snapdragon 450', 's439' => 'Snapdragon 439', 's435' => 'Snapdragon 435', 's430' => 'Snapdragon 430', 's425' => 'Snapdragon 425', 'e9825' => 'Exynos 9825', 'e9820' => 'Exynos 9820', 'e9810' => 'Exynos 9810', 'e9611' => 'Exynos 9611', 'e9610' => 'Exynos 9610', 'e8895' => 'Exynos 8895', 'e8890' => 'Exynos 8890', 'e7904' => 'Exynos 7904', 'e7884' => 'Exynos 7884', 'e7870' => 'Exynos 7870', 'e7580' => 'Exynos 7580', 'e7420' => 'Exynos 7420', 'hx25' => 'Helio X25', 'hx20' => 'Helio X20', 'hx10' => 'Helio X10', 'hg90t' => 'Helio G90T', 'hp70' => 'Helio P70', 'hp65' => 'Helio P65','hp60' => 'Helio P60', 'hp25' => 'Helio P25', 'hp23' => 'Helio P23', 'hp20' => 'Helio P20', 'hp10' => 'Helio P10', 'k990' => 'Kirin 990', 'k980' => 'Kirin 980', 'k970' => 'Kirin 970', 'k960' => 'Kirin 960', 'k659' => 'Kirin 659'], null, ['disabled' => 'disabled', 'class' => 'form-control', 'id' => 'chipset']) }}
-                    @else
-                        {{ Form::select('chipset', ['s865' => 'Snapdragon 865', 's855p' => 'Snapdragon 855+', 's855' => 'Snapdragon 855', 's845' => 'Snapdragon 845', 's835' => 'Snapdragon 835', 's821' => 'Snapdragon 821', 's820' => 'Snapdragon 820', 's765g' => 'Snapdragon 765G', 's730g' => 'Snapdragon 730G', 's730' => 'Snapdragon 730', 's712' => 'Snapdragon 712', 's710' => 'Snapdragon 710', 's675' => 'Snapdragon 675', 's670' => 'Snapdragon 670', 's665' => 'Snapdragon 665', 's660' => 'Snapdragon 660', 's652' => 'Snapdragon 652', 's650' => 'Snapdragon 650', 's636' => 'Snapdragon 636', 's630' => 'Snapdragon 630', 's625' => 'Snapdragon 625', 's450' => 'Snapdragon 450', 's439' => 'Snapdragon 439', 's435' => 'Snapdragon 435', 's430' => 'Snapdragon 430', 's425' => 'Snapdragon 425', 'e9825' => 'Exynos 9825', 'e9820' => 'Exynos 9820', 'e9810' => 'Exynos 9810', 'e9611' => 'Exynos 9611', 'e9610' => 'Exynos 9610', 'e8895' => 'Exynos 8895', 'e8890' => 'Exynos 8890', 'e7904' => 'Exynos 7904', 'e7884' => 'Exynos 7884', 'e7870' => 'Exynos 7870', 'e7580' => 'Exynos 7580', 'e7420' => 'Exynos 7420', 'hx25' => 'Helio X25', 'hx20' => 'Helio X20', 'hx10' => 'Helio X10', 'hg90t' => 'Helio G90T', 'hp70' => 'Helio P70', 'hp65' => 'Helio P65','hp60' => 'Helio P60', 'hp25' => 'Helio P25', 'hp23' => 'Helio P23', 'hp20' => 'Helio P20', 'hp10' => 'Helio P10', 'k990' => 'Kirin 990', 'k980' => 'Kirin 980', 'k970' => 'Kirin 970', 'k960' => 'Kirin 960', 'k659' => 'Kirin 659'], null, ['class' => 'form-control', 'id' => 'chipset']) }}
+                        <script type="text/javascript">
+                            $("#chipset").prop("disabled", true);
+                        </script>
                     @endif
 
                     {{ Form::label('mem_ram', 'Ram Memory') }}
                         <div class="form-control">
                         @if(Request::is('*/edit'))
-                            {{ Form::input('text','mem_ram', null, ['id' => 'mem_ram', 'data-slider-value'=>$smartphones['mem_ram']]) }}
+                            {{ Form::input('text','mem_ram', null, ['id' => 'mem_ram', 'data-slider-value' => $smartphones['mem_ram']]) }}
                         @elseif(Request::is('*/view'))
-                            {{ Form::input('text','mem_ram', null, ['data-slider-enabled' => 'false', 'id' => 'mem_ram', 'data-slider-value'=>$smartphones['mem_ram']]) }}
+                            {{ Form::input('text','mem_ram', null, ['data-slider-enabled' => 'false', 'id' => 'mem_ram', 'data-slider-value' => $smartphones['mem_ram']]) }}
                         @else
                             {{ Form::input('text','mem_ram', null, ['id' => 'mem_ram']) }}
                         @endif
@@ -183,8 +185,10 @@
                         {{ Form::label('antutu', 'Antutu') }}
                         @if(Request::is('*/view'))
                         {{ Form::number('antutu', old('antutu'), ['disabled' => 'disabled', 'class' => 'form-control']) }}
-                        @else
+                        @elseif(Request::is('*/edit'))
                         {{ Form::number('antutu', old('antutu'), ['class' => 'form-control']) }}
+                        @else
+                        {{ Form::number('antutu', 0, ['class' => 'form-control']) }}
                         @endif
 
                         <br />
