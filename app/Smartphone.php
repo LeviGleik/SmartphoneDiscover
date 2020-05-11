@@ -27,7 +27,7 @@ class Smartphone extends Model
 		'antutu'
 	];
     protected $table = 'smartphones';
-	public $sortable = ['brand', 'name', 'year', 'main_cam', 'battery', 'price'];
+	public $sortable = ['brand', 'name', 'year', 'main_cam', 'mem_int', 'price'];
 
 	public function advancedSearchQuery($input){
 		// var_dump($input);
