@@ -4,9 +4,9 @@
     <div class="row justify-content-center">
         <div class="card">
             <div class="card-header">
-				Smartphones
+                Smartphones
                 @auth
-            	<div class="col-md-offset-2 float-right">
+                <div class="col-md-offset-2 float-right">
                     <a class="btn btn-outline-primary btn-sm" href="{{ url('smartphones/form') }}">Add</a>
                 </div>
                 @endauth
