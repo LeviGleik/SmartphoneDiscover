@@ -28,7 +28,7 @@
                     <tbody>
                         @foreach($smartphones as $smartphone)
                             <tr>
-                                <td style="text-align: center;">{{ ucfirst($smartphone->brand) }}</td>
+                                <td style="text-align: center;">{{ strtoupper($smartphone->brand) }}</td>
                                 <td style="text-align: center;">{{ ucfirst($smartphone->name) }}</td>
                                 <td style="text-align: center;">{{ $smartphone->main_cam }}MP</td>
                                 <td style="text-align: center;">{{ $smartphone->mem_int }}GB</td>
