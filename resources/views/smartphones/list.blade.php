@@ -8,6 +8,7 @@
                 @auth
                 <div class="col-md-offset-2 float-right">
                     <a class="btn btn-outline-primary btn-sm" href="{{ url('smartphones/form') }}">Add</a>
+                    <a class="btn btn-outline-primary btn-sm" href="{{ url()->previous() }}">Back</a>
                 </div>
                 @endauth
             </div>

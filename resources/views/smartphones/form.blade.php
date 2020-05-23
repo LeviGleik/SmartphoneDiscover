@@ -7,7 +7,7 @@
                 <div class="card-header">
 					Register
                     <div class="col-md-offset-2 float-right">
-                        <a class="btn btn-primary btn-sm" href="{{ url('smartphones') }}">Back</a>
+                        <a class="btn btn-outline-primary btn-sm" href="{{ url()->previous() }}">Back</a>
                     </div>
                 </div>
                 <div class="card-body">

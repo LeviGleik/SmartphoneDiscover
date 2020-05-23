@@ -46,23 +46,6 @@ class Smartphone extends Model
     }
 	public function intermediateSearchQuery($input){
 		// var_dump($input);
-		switch ($input['price']) {
-			case 1:
-				$price = [0, 1000];
-				break;
-			case 2:
-				$price = [1000, 2000];
-				break;
-			case 3:
-				$price = [2000, 3000];
-				break;
-			case 4:
-				$price = [3000, 4500];
-				break;
-			case 5:
-				$price = [4500, 11000];
-				break;
-		}
 		switch ($input['performance']) {
 			case 1:
 				$performance = [0, 70000];
@@ -71,30 +54,30 @@ class Smartphone extends Model
 				$performance = [70000, 120000];
 				break;
 			case 3:
-				$performance = [120000, 250000];
+				$performance = [100000, 250000];
 				break;
 			case 4:
-				$performance = [250000, 350000];
+				$performance = [150000, 350000];
 				break;
 			case 5:
-				$performance = [350000, 1000000];
+				$performance = [220000, 1000000];
 				break;
 		}
 		switch ($input['camera']) {
 			case 1:
-				$camera = [5, 12];
+				$camera = [5, 8];
 				break;
 			case 2:
-				$camera = [12, 20];
+				$camera = [8, 10];
 				break;
 			case 3:
-				$camera = [20, 32];
+				$camera = [8, 12];
 				break;
 			case 4:
-				$camera = [32, 40];
+				$camera = [12, 16];
 				break;
 			case 5:
-				$camera = [40, 108];
+				$camera = [16, 108];
 				break;
 		}
 		switch ($input['battery']) {
@@ -102,16 +85,16 @@ class Smartphone extends Model
 				$battery = [0, 1200];
 				break;
 			case 2:
-				$battery = [1200, 2000];
+				$battery = [0, 2000];
 				break;
 			case 3:
-				$battery = [2000, 3200];
+				$battery = [2000, 4000];
 				break;
 			case 4:
-				$battery = [3200, 4200];
+				$battery = [3200, 4500];
 				break;
 			case 5:
-				$battery = [4200, 6000];
+				$battery = [4000, 6000];
 				break;
 		}
 		switch ($input['memory']) {
@@ -119,34 +102,22 @@ class Smartphone extends Model
 				$memory = [0, 2];
 				break;
 			case 2:
-				$memory = [2, 4];
+				$memory = [0, 16];
 				break;
 			case 3:
-				$memory = [4, 16];
+				$memory = [16, 64];
 				break;
 			case 4:
-				$memory = [16, 64];
+				$memory = [32, 128];
 				break;
 			case 5:
 				$memory = [64, 512];
 				break;
 		}
-		return $this->whereBetween('price', $price)->
-				whereBetween('antutu', $performance)->
+		return $this->whereBetween('antutu', $performance)->
 				whereBetween('main_cam', $camera)->
 				whereBetween('battery', $battery)->
 				whereBetween('mem_int', $memory)->
 				paginate(8);
-    }
-    public function beginnerSearchQuery($input){
-		// var_dump($input);
-
-    	$i = 0;
-    	$data = $this->whereBetween('price', explode(",", $input['price']))->get()->toArray();
-    	// foreach ($data as $key) {
-    	// 	$antutu[$i++] = $key['antutu'];
-    	// }
-		// print_r(max($antutu));
-		return $this->whereBetween('price', explode(",", $input['price']))->paginate(8);
     }
 }
