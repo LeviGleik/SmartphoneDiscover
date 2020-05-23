@@ -22,7 +22,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        \Session::flush();
+        // \Session::flush();
         return view('home.home');
     }
     public function intermediate(){

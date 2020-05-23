@@ -15,6 +15,9 @@
             			</a>
 	                </div>
                 </div>
+                <!-- <div>
+                    <p><h1 class="text-center">Welcome to SmartphoneDiscover</h1></p>
+                </div> -->
 	            @yield('intermediate')
 	            @yield('advanced')
             </div>
